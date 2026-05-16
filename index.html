@@ -1,0 +1,1106 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Phantom — Warranty Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #0a3d35;
+      --teal2:   #0d4f44;
+      --teal-lt: rgba(10,61,53,0.08);
+      --red:     #c0392b;
+      --blue:    #1a56b0;
+      --white:   #ffffff;
+      --bg:      #eef1f0;
+      --card:    #ffffff;
+      --border:  #e0e0e0;
+      --subtle:  #f7f9f8;
+      --muted:   #888888;
+      --text:    #1a1a1a;
+      --success: #1a7a4a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: 'DM Sans', Arial, sans-serif;
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── wrapper ── */
+    .pw {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding-bottom: 32px;
+    }
+
+    @media (min-width: 520px) {
+      body { padding: 28px 16px; }
+      .pw {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      }
+    }
+
+    /* ── header ── */
+    .ph-header {
+      background: var(--teal);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .ph-header::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      border-style: solid;
+      border-width: 0 120px 120px 0;
+      border-color: transparent var(--blue) transparent transparent;
+      opacity: 0.5;
+    }
+    .ph-header::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      border-style: solid;
+      border-width: 0 72px 72px 0;
+      border-color: transparent rgba(255,255,255,0.13) transparent transparent;
+    }
+    /* decorative circles */
+    .ph-header-circle1 {
+      position: absolute;
+      bottom: -30px; left: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 20px solid rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+    .ph-header-circle2 {
+      position: absolute;
+      bottom: 10px; left: 55px;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      border: 10px solid rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+    .ph-header-inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px 20px 0;
+    }
+    .ph-brand-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .ph-logo-text {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 40px;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    .ph-underline {
+      display: flex;
+      margin-top: 5px;
+    }
+    .ph-underline span {
+      height: 3px;
+      width: 52px;
+      display: block;
+    }
+    .ph-underline .r { background: var(--red); }
+    .ph-underline .b { background: var(--blue); }
+    .ph-sub {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 3px;
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+    .ph-badge { text-align: right; padding-top: 4px; }
+    .ph-badge-top {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+    .ph-badge-bot {
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 3px;
+    }
+    .ph-hero {
+      margin-top: 18px;
+      padding-bottom: 20px;
+    }
+    .ph-hero h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      transition: all 0.25s;
+    }
+    .ph-hero p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 4px;
+      transition: all 0.25s;
+    }
+    .ph-red-bar { height: 4px; background: var(--red); }
+
+    /* ── tabs ── */
+    .ph-tabs {
+      display: flex;
+      background: var(--card);
+      border-bottom: 1.5px solid var(--border);
+      padding: 0 10px;
+    }
+    .ph-tab {
+      flex: 1;
+      padding: 12px 6px 11px;
+      border: none;
+      background: none;
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2.5px solid transparent;
+      margin-bottom: -1.5px;
+      transition: color 0.18s, border-color 0.18s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ph-tab.active {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    /* ── step bar ── */
+    .ph-stepbar {
+      display: flex;
+      gap: 5px;
+      padding: 12px 16px 0;
+      background: var(--card);
+    }
+    .ph-step {
+      flex: 1;
+      height: 3px;
+      border-radius: 2px;
+      background: #e5e5e5;
+      transition: background 0.3s;
+    }
+    .ph-step.done { background: var(--teal); }
+
+    /* ── card body ── */
+    .ph-card {
+      background: var(--card);
+      padding: 16px 16px 22px;
+    }
+
+    /* ── section label ── */
+    .ph-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin: 0 0 11px;
+      padding-bottom: 7px;
+      border-bottom: 1.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .ph-label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .ph-divider { height: 1px; background: #f0f0f0; margin: 16px 0; }
+
+    /* ── fields ── */
+    .ph-field { margin-bottom: 11px; }
+    .ph-field label {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .ph-field input,
+    .ph-field select {
+      width: 100%;
+      padding: 11px 13px;
+      font-size: 15px;
+      font-family: 'DM Sans', Arial, sans-serif;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--subtle);
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      -webkit-appearance: auto;
+      appearance: auto;
+    }
+    .ph-field input:focus,
+    .ph-field select:focus {
+      border-color: var(--teal);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(10,61,53,0.08);
+    }
+    .ph-field input[readonly] {
+      background: #efefef;
+      color: var(--muted);
+      cursor: default;
+    }
+    .ph-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* serial input with icon */
+    .ph-srl { position: relative; }
+    .ph-srl input { padding-right: 38px; }
+    .ph-srl-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    /* car grid */
+    .ph-car-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .ph-car-full { grid-column: 1 / -1; }
+
+    /* ── actions ── */
+    .ph-actions {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .ph-btn {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: transform 0.1s, opacity 0.15s, box-shadow 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .ph-btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(10,61,53,0.25);
+    }
+    .ph-btn-primary:active { transform: scale(0.97); }
+    .ph-btn-secondary {
+      background: #efefef;
+      color: #666;
+      border: 1.5px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .ph-btn-full {
+      grid-column: 1 / -1;
+    }
+
+    .ph-status {
+      font-size: 12px;
+      color: var(--red);
+      text-align: center;
+      min-height: 18px;
+      margin-top: 9px;
+      line-height: 1.4;
+    }
+
+    /* ── success view ── */
+    .ph-success {
+      display: none;
+      text-align: center;
+      padding: 36px 16px 24px;
+    }
+    .ph-success-ring {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      border: 3px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      background: rgba(10,61,53,0.06);
+      animation: popIn 0.4s ease;
+    }
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .ph-success h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 22px;
+      font-style: italic;
+      font-weight: 900;
+      color: var(--teal);
+      margin: 0 0 6px;
+    }
+    .ph-success > p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── conf card ── */
+    .ph-conf {
+      margin-top: 16px;
+      padding: 4px 14px;
+      background: var(--subtle);
+      border-radius: 12px;
+      text-align: left;
+      border: 1.5px solid var(--border);
+    }
+    .ph-conf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+    }
+    .ph-conf-row + .ph-conf-row { border-top: 1px solid #efefef; }
+    .ph-conf-lbl {
+      color: var(--muted);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-right: 10px;
+    }
+    .ph-conf-val {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 13px;
+      text-align: right;
+      max-width: 62%;
+      word-break: break-word;
+    }
+
+    /* highlighted row */
+    .ph-conf-row.highlight {
+      background: rgba(10,61,53,0.07);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 6px -14px 6px;
+      border-top: none !important;
+    }
+    .ph-conf-row.highlight .ph-conf-lbl {
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .ph-conf-row.highlight .ph-conf-val {
+      color: var(--teal);
+      font-size: 15px;
+    }
+
+    /* ── check warranty view ── */
+    #checkView { display: none; }
+
+    .ph-check-hero {
+      text-align: center;
+      padding: 18px 0 16px;
+    }
+    .ph-check-hero-icon {
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: var(--teal-lt);
+      border: 2px solid rgba(10,61,53,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 11px;
+    }
+    .ph-check-hero p {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* found badge */
+    .ph-found-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(26,122,74,0.1);
+      color: var(--success);
+      border: 1px solid rgba(26,122,74,0.2);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .ph-found-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse 1.8s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+
+    /* not found */
+    .ph-not-found {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .ph-not-found-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: rgba(192,57,43,0.08);
+      border: 2px solid rgba(192,57,43,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .ph-not-found p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .ph-not-found strong { color: var(--text); }
+
+    /* loading */
+    .ph-loading {
+      text-align: center;
+      padding: 28px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .ph-spinner {
+      width: 28px; height: 28px;
+      border: 3px solid #e0e0e0;
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 10px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── submitting state ── */
+    .ph-btn-primary.loading {
+      opacity: 0.7;
+      pointer-events: none;
+      position: relative;
+    }
+    .ph-btn-primary.loading::after {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<div class="pw">
+
+  <!-- HEADER -->
+  <div class="ph-header">
+    <div class="ph-header-circle1"></div>
+    <div class="ph-header-circle2"></div>
+    <div class="ph-header-inner">
+      <div class="ph-brand-row">
+        <div>
+          <div class="ph-logo-text">PHANTOM</div>
+          <div class="ph-underline">
+            <span class="r"></span>
+            <span class="b"></span>
+          </div>
+          <div class="ph-sub">Nano Ceramic Film &nbsp;·&nbsp; USA</div>
+        </div>
+        <div class="ph-badge">
+          <div class="ph-badge-top">PRODUCT WARRANTY</div>
+          <div class="ph-badge-bot">Official Warranty Card</div>
+        </div>
+      </div>
+      <div class="ph-hero">
+        <h1 id="heroTitle">Warranty<br>Registration</h1>
+        <p id="heroSub">Register your Phantom film for genuine support &amp; service</p>
+      </div>
+    </div>
+    <div class="ph-red-bar"></div>
+  </div>
+
+  <!-- TABS -->
+  <div class="ph-tabs">
+    <button class="ph-tab active" id="tabRegister" onclick="switchTab('register')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+      </svg>
+      REGISTER
+    </button>
+    <button class="ph-tab" id="tabCheck" onclick="switchTab('check')">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      CHECK WARRANTY
+    </button>
+  </div>
+
+  <!-- STEP BAR -->
+  <div class="ph-stepbar" id="stepBarWrap">
+    <div class="ph-step done" id="s1"></div>
+    <div class="ph-step" id="s2"></div>
+    <div class="ph-step" id="s3"></div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="ph-card">
+
+    <!-- ═══ REGISTER FORM ═══ -->
+    <div id="formView">
+
+      <!-- PRODUCT / SERIAL -->
+      <div class="ph-label"><span class="ph-label-dot"></span>Product Details</div>
+      <div class="ph-field">
+        <label>Serial Number *</label>
+        <div class="ph-srl">
+          <input id="r_serial"
+                 placeholder="e.g. PHM-2024-XXXXXX"
+                 required
+                 autocomplete="off"
+                 style="text-transform:uppercase;"
+                 oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+          <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="ph-divider"></div>
+
+      <!-- CUSTOMER INFO -->
+      <div class="ph-label"><span class="ph-label-dot"></span>Customer Info</div>
+      <div class="ph-field">
+        <label>Full Name *</label>
+        <input id="r_name" placeholder="Your full name" required oninput="updateStepBar()" />
+      </div>
+      <div class="ph-field">
+        <label>Phone Number *</label>
+        <input id="r_phone" placeholder="+91 XXXXX XXXXX" type="tel" required oninput="updateStepBar()" />
+      </div>
+
+      <div class="ph-divider"></div>
+
+      <!-- CAR DETAILS -->
+      <div class="ph-label"><span class="ph-label-dot"></span>Car Details</div>
+      <div class="ph-car-grid">
+        <div class="ph-field">
+          <label>Car Brand *</label>
+          <input id="r_carbrand" placeholder="e.g. Maruti, Hyundai" required oninput="updateStepBar()" />
+        </div>
+        <div class="ph-field">
+          <label>Car Model *</label>
+          <input id="r_carmodel" placeholder="e.g. Swift, Creta" required oninput="updateStepBar()" />
+        </div>
+        <div class="ph-field">
+          <label>Year</label>
+          <input id="r_caryear" placeholder="e.g. 2022" type="number" min="2000" max="2030" />
+        </div>
+        <div class="ph-field">
+          <label>Car Color</label>
+          <input id="r_carcolor" placeholder="e.g. White" />
+        </div>
+        <div class="ph-field ph-car-full">
+          <label>Registration Number *</label>
+          <input id="r_regnumber"
+                 placeholder="e.g. KL-07-AB-1234"
+                 required
+                 style="text-transform:uppercase;"
+                 oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+        </div>
+      </div>
+
+      <div class="ph-divider"></div>
+
+      <!-- PURCHASE DETAILS -->
+      <div class="ph-label"><span class="ph-label-dot"></span>Purchase Details</div>
+      <div class="ph-row">
+        <div class="ph-field">
+          <label>Purchase Date</label>
+          <input id="r_date" placeholder="Auto-filled" readonly />
+        </div>
+        <div class="ph-field">
+          <label>Location *</label>
+          <select id="r_location" required onchange="updateStepBar()">
+            <option value="">Select</option>
+            <option>Out of Kerala</option>
+            <option>Alappuzha</option>
+            <option>Ernakulam</option>
+            <option>Idukki</option>
+            <option>Kannur</option>
+            <option>Kasaragod</option>
+            <option>Kollam</option>
+            <option>Kottayam</option>
+            <option>Kozhikode</option>
+            <option>Malappuram</option>
+            <option>Palakkad</option>
+            <option>Pathanamthitta</option>
+            <option>Thiruvananthapuram</option>
+            <option>Thrissur</option>
+            <option>Wayanad</option>
+          </select>
+        </div>
+      </div>
+      <div class="ph-field">
+        <label>Shop / Dealer Name *</label>
+        <input id="r_shop" placeholder="Where did you purchase?" required oninput="updateStepBar()" />
+      </div>
+
+      <div class="ph-actions">
+        <button class="ph-btn ph-btn-primary" id="registerBtn" onclick="onRegister()">Register Warranty</button>
+        <button class="ph-btn ph-btn-secondary" onclick="clearForm()">Clear</button>
+      </div>
+      <div class="ph-status" id="r_status"></div>
+
+    </div><!-- /formView -->
+
+    <!-- ═══ SUCCESS VIEW ═══ -->
+    <div class="ph-success" id="successView">
+      <div class="ph-success-ring">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a3d35" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h3>Warranty Registered!</h3>
+      <p>Your Phantom film is now covered.<br>Keep this confirmation for your records.</p>
+      <div class="ph-conf">
+        <div class="ph-conf-row">
+          <span class="ph-conf-lbl">Serial No.</span>
+          <span class="ph-conf-val" id="conf_serial"></span>
+        </div>
+        <div class="ph-conf-row">
+          <span class="ph-conf-lbl">Customer</span>
+          <span class="ph-conf-val" id="conf_name"></span>
+        </div>
+        <div class="ph-conf-row">
+          <span class="ph-conf-lbl">Vehicle</span>
+          <span class="ph-conf-val" id="conf_car"></span>
+        </div>
+        <div class="ph-conf-row">
+          <span class="ph-conf-lbl">Reg. No.</span>
+          <span class="ph-conf-val" id="conf_reg"></span>
+        </div>
+        <div class="ph-conf-row">
+          <span class="ph-conf-lbl">Shop</span>
+          <span class="ph-conf-val" id="conf_shop"></span>
+        </div>
+        <div class="ph-conf-row highlight">
+          <span class="ph-conf-lbl">📅 Registered On</span>
+          <span class="ph-conf-val" id="conf_date"></span>
+        </div>
+      </div>
+      <button class="ph-btn ph-btn-secondary" onclick="resetForm()" style="margin-top:18px; width:100%;">
+        ＋ Register Another
+      </button>
+    </div><!-- /successView -->
+
+    <!-- ═══ CHECK WARRANTY VIEW ═══ -->
+    <div id="checkView">
+
+      <div class="ph-check-hero">
+        <div class="ph-check-hero-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a3d35" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+        <p>Enter your <strong>Serial Number</strong> or<br><strong>Car Registration Number</strong> to verify</p>
+      </div>
+
+      <div class="ph-label"><span class="ph-label-dot"></span>Warranty Lookup</div>
+      <div class="ph-field">
+        <label>Serial No. or Car Registration No.</label>
+        <div class="ph-srl">
+          <input id="chk_query"
+                 placeholder="e.g. PHM-2024-XXXXXX or KL-07-AB-1234"
+                 style="text-transform:uppercase;"
+                 autocomplete="off"
+                 oninput="this.value=this.value.toUpperCase()"
+                 onkeydown="if(event.key==='Enter') onCheck()" />
+          <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </div>
+      </div>
+      <div class="ph-actions" style="grid-template-columns: 1fr; margin-top: 2px;">
+        <button class="ph-btn ph-btn-primary" id="checkBtn" onclick="onCheck()">Check Warranty Status</button>
+      </div>
+      <div class="ph-status" id="chk_status"></div>
+
+      <!-- Loading -->
+      <div class="ph-loading" id="chk_loading" style="display:none;">
+        <div class="ph-spinner"></div>
+        Looking up warranty records…
+      </div>
+
+      <!-- Result: Found -->
+      <div id="chk_result" style="display:none; margin-top:8px;">
+        <div style="text-align:center; margin-bottom:6px;">
+          <div class="ph-found-badge">
+            <div class="ph-found-badge-dot"></div>
+            WARRANTY ACTIVE
+          </div>
+        </div>
+        <div class="ph-conf">
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Serial No.</span>
+            <span class="ph-conf-val" id="chk_serial"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Customer</span>
+            <span class="ph-conf-val" id="chk_name"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Phone</span>
+            <span class="ph-conf-val" id="chk_phone"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Vehicle</span>
+            <span class="ph-conf-val" id="chk_car"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Reg. No.</span>
+            <span class="ph-conf-val" id="chk_reg"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Shop / Dealer</span>
+            <span class="ph-conf-val" id="chk_shop"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Location</span>
+            <span class="ph-conf-val" id="chk_location"></span>
+          </div>
+          <div class="ph-conf-row">
+            <span class="ph-conf-lbl">Purchase Date</span>
+            <span class="ph-conf-val" id="chk_purchase"></span>
+          </div>
+          <div class="ph-conf-row highlight">
+            <span class="ph-conf-lbl">📅 Registered On</span>
+            <span class="ph-conf-val" id="chk_date"></span>
+          </div>
+        </div>
+        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:14px; width:100%;">Check Another</button>
+      </div>
+
+      <!-- Result: Not Found -->
+      <div id="chk_notfound" style="display:none; margin-top:10px;">
+        <div class="ph-not-found">
+          <div class="ph-not-found-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <p><strong>No warranty found</strong><br>
+          No record matches <strong id="chk_query_echo"></strong>.<br>
+          Please check and try again, or register a new warranty.</p>
+        </div>
+        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:6px; width:100%;">Try Again</button>
+      </div>
+
+    </div><!-- /checkView -->
+
+  </div><!-- /ph-card -->
+</div><!-- /pw -->
+
+<script>
+  // ─────────────────────────────────────────────────────────
+  //  Phantom Warranty — client JS
+  // ─────────────────────────────────────────────────────────
+
+  const injectedSN = window.__SN__ || '';
+  let currentTab   = 'register';
+
+  function fmtDate(d) {
+    return String(d.getDate()).padStart(2,'0') + '-' +
+           String(d.getMonth()+1).padStart(2,'0') + '-' +
+           d.getFullYear();
+  }
+
+  // ── init ──────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function () {
+    if (injectedSN) document.getElementById('r_serial').value = injectedSN;
+    document.getElementById('r_date').value = fmtDate(new Date());
+    updateStepBar();
+  });
+
+  // ── tab switching ─────────────────────────────────────────
+  function switchTab(tab) {
+    currentTab = tab;
+    const isReg = tab === 'register';
+
+    document.getElementById('tabRegister').classList.toggle('active', isReg);
+    document.getElementById('tabCheck').classList.toggle('active', !isReg);
+    document.getElementById('stepBarWrap').style.display = isReg ? 'flex' : 'none';
+
+    const fv = document.getElementById('formView');
+    const sv = document.getElementById('successView');
+    const cv = document.getElementById('checkView');
+
+    if (isReg) {
+      cv.style.display = 'none';
+      const showSuccess = sv.style.display === 'block';
+      fv.style.display  = showSuccess ? 'none' : 'block';
+      sv.style.display  = showSuccess ? 'block' : 'none';
+      document.getElementById('heroTitle').innerHTML  = 'Warranty<br>Registration';
+      document.getElementById('heroSub').textContent  = 'Register your Phantom film for genuine support & service';
+    } else {
+      fv.style.display = 'none';
+      sv.style.display = 'none';
+      cv.style.display = 'block';
+      document.getElementById('heroTitle').innerHTML  = 'Check<br>Warranty';
+      document.getElementById('heroSub').textContent  = 'Verify your Phantom film warranty status';
+    }
+  }
+
+  // ── step bar ──────────────────────────────────────────────
+  function updateStepBar() {
+    const s   = document.getElementById('r_serial').value.trim();
+    const n   = document.getElementById('r_name').value.trim();
+    const p   = document.getElementById('r_phone').value.trim();
+    const cb  = document.getElementById('r_carbrand').value.trim();
+    const cm  = document.getElementById('r_carmodel').value.trim();
+    const rn  = document.getElementById('r_regnumber').value.trim();
+    const sh  = document.getElementById('r_shop').value.trim();
+    const loc = document.getElementById('r_location').value;
+
+    let step = 1;
+    if (s && n && p)               step = 2;
+    if (s && n && p && cb && cm && rn) step = 3;
+    if (s && n && p && cb && cm && rn && sh && loc) step = 4;
+
+    for (let i = 1; i <= 3; i++) {
+      document.getElementById('s' + i).classList.toggle('done', i < step);
+    }
+  }
+
+  // ── register ──────────────────────────────────────────────
+  function onRegister() {
+    const statusEl = document.getElementById('r_status');
+    const btn      = document.getElementById('registerBtn');
+
+    const s   = document.getElementById('r_serial').value.trim();
+    const n   = document.getElementById('r_name').value.trim();
+    const p   = document.getElementById('r_phone').value.trim();
+    const cb  = document.getElementById('r_carbrand').value.trim();
+    const cm  = document.getElementById('r_carmodel').value.trim();
+    const cy  = document.getElementById('r_caryear').value.trim();
+    const cc  = document.getElementById('r_carcolor').value.trim();
+    const rn  = document.getElementById('r_regnumber').value.trim();
+    const sh  = document.getElementById('r_shop').value.trim();
+    const loc = document.getElementById('r_location').value;
+    const dt  = document.getElementById('r_date').value;
+
+    if (!s || !n || !p || !cb || !cm || !rn || !sh || !loc) {
+      statusEl.textContent = '⚠ Please fill in all required fields.';
+      return;
+    }
+
+    statusEl.textContent = '';
+    btn.classList.add('loading');
+    btn.textContent = 'Submitting…';
+
+    const data = {
+      serial:       s,
+      customerName: n,
+      phone:        p,
+      purchaseDate: dt,
+      shop:         sh,
+      notes:        loc,
+      carBrand:     cb,
+      carModel:     cm,
+      carYear:      cy,
+      carColor:     cc,
+      regNumber:    rn
+    };
+
+    // Pre-fill success card
+    document.getElementById('conf_serial').textContent = s;
+    document.getElementById('conf_name').textContent   = n;
+    document.getElementById('conf_car').textContent    = [cy, cb, cm].filter(Boolean).join(' ');
+    document.getElementById('conf_reg').textContent    = rn;
+    document.getElementById('conf_shop').textContent   = sh;
+    document.getElementById('conf_date').textContent   = dt;
+
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbz8dQFJxi1LyfpsToxpsIgqQrZ-p1S4SGkBtDk1LEOmdsxJrO5wxy2kgdiSGLyCWnOI/exec';
+
+    var params = new URLSearchParams();
+    params.append('action', 'registerWarranty');
+    Object.keys(data).forEach(function(k) { params.append(k, data[k]); });
+
+    fetch(GAS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    })
+    .then(function() {
+      // no-cors means we can't read the response body, so assume success on network completion
+      btn.classList.remove('loading');
+      btn.textContent = 'Register Warranty';
+      statusEl.textContent = '';
+      showSuccess();
+    })
+    .catch(function(err) {
+      btn.classList.remove('loading');
+      btn.textContent = 'Register Warranty';
+      statusEl.textContent = '✕ Network error. Please check your connection and try again.';
+    });
+  }
+
+  function showSuccess() {
+    document.getElementById('formView').style.display    = 'none';
+    document.getElementById('successView').style.display = 'block';
+  }
+
+  function clearForm() {
+    ['r_name','r_phone','r_carbrand','r_carmodel','r_caryear','r_carcolor','r_regnumber','r_shop']
+      .forEach(function(id) { document.getElementById(id).value = ''; });
+    document.getElementById('r_location').value     = '';
+    document.getElementById('r_serial').value       = injectedSN;
+    document.getElementById('r_date').value         = fmtDate(new Date());
+    document.getElementById('r_status').textContent = '';
+    updateStepBar();
+  }
+
+  function resetForm() {
+    clearForm();
+    document.getElementById('formView').style.display    = 'block';
+    document.getElementById('successView').style.display = 'none';
+  }
+
+  // ── check warranty ────────────────────────────────────────
+  function onCheck() {
+    const q        = document.getElementById('chk_query').value.trim();
+    const statusEl = document.getElementById('chk_status');
+    const btn      = document.getElementById('checkBtn');
+
+    if (!q) {
+      statusEl.textContent = '⚠ Please enter a serial or registration number.';
+      return;
+    }
+
+    statusEl.textContent = '';
+    document.getElementById('chk_result').style.display   = 'none';
+    document.getElementById('chk_notfound').style.display = 'none';
+    document.getElementById('chk_loading').style.display  = 'block';
+    btn.style.opacity        = '0.6';
+    btn.style.pointerEvents  = 'none';
+
+    function resetBtn() {
+      btn.style.opacity       = '1';
+      btn.style.pointerEvents = '';
+    }
+
+    var GAS_URL = 'https://script.google.com/macros/s/AKfycbz8dQFJxi1LyfpsToxpsIgqQrZ-p1S4SGkBtDk1LEOmdsxJrO5wxy2kgdiSGLyCWnOI/exec';
+
+    if (typeof google !== 'undefined' && google.script) {
+      google.script.run
+        .withSuccessHandler(function(res) {
+          document.getElementById('chk_loading').style.display = 'none';
+          resetBtn();
+          if (res.success) {
+            populateCheckResult(res);
+          } else {
+            document.getElementById('chk_query_echo').textContent = q;
+            document.getElementById('chk_notfound').style.display = 'block';
+          }
+        })
+        .withFailureHandler(function(err) {
+          document.getElementById('chk_loading').style.display = 'none';
+          resetBtn();
+          statusEl.textContent = '✕ ' + err.toString();
+        })
+        .checkWarranty(q);
+    } else {
+      var params = new URLSearchParams();
+      params.append('action', 'checkWarranty');
+      params.append('query', q);
+
+      fetch(GAS_URL + '?' + params.toString(), { method: 'GET' })
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          document.getElementById('chk_loading').style.display = 'none';
+          resetBtn();
+          if (res.success) {
+            populateCheckResult(res);
+          } else {
+            document.getElementById('chk_query_echo').textContent = q;
+            document.getElementById('chk_notfound').style.display = 'block';
+          }
+        })
+        .catch(function(err) {
+          document.getElementById('chk_loading').style.display = 'none';
+          resetBtn();
+          statusEl.textContent = '✕ Network error. Please check your connection and try again.';
+        });
+    }
+  }
+
+  function populateCheckResult(res) {
+    document.getElementById('chk_serial').textContent   = res.serial      || '—';
+    document.getElementById('chk_name').textContent     = res.customer    || '—';
+    document.getElementById('chk_phone').textContent    = res.phone       || '—';
+    document.getElementById('chk_car').textContent      = [res.carYear, res.carBrand, res.carModel].filter(Boolean).join(' ') || '—';
+    document.getElementById('chk_reg').textContent      = res.regNumber   || '—';
+    document.getElementById('chk_shop').textContent     = res.shop        || '—';
+    document.getElementById('chk_location').textContent = res.location    || '—';
+    document.getElementById('chk_purchase').textContent = res.purchaseDate || '—';
+    document.getElementById('chk_date').textContent     = res.timestamp   || '—';
+    document.getElementById('chk_result').style.display = 'block';
+  }
+
+  function clearCheck() {
+    document.getElementById('chk_query').value           = '';
+    document.getElementById('chk_result').style.display  = 'none';
+    document.getElementById('chk_notfound').style.display = 'none';
+    document.getElementById('chk_status').textContent    = '';
+  }
+</script>
+
+</body>
+</html>
