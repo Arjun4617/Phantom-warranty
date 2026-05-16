@@ -161,23 +161,23 @@
     /* ── tabs ── */
     .ph-tabs {
       display: flex;
-      background: var(--card);
-      border-bottom: 1.5px solid var(--border);
+      background: var(--teal);
+      border-bottom: none;
       padding: 0 10px;
     }
     .ph-tab {
       flex: 1;
-      padding: 12px 6px 11px;
+      padding: 11px 6px 10px;
       border: none;
       background: none;
       font-family: 'DM Sans', Arial, sans-serif;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.5px;
-      color: var(--muted);
+      letter-spacing: 0.8px;
+      color: rgba(255,255,255,0.5);
       cursor: pointer;
       border-bottom: 2.5px solid transparent;
-      margin-bottom: -1.5px;
+      margin-bottom: 0;
       transition: color 0.18s, border-color 0.18s;
       display: flex;
       align-items: center;
@@ -186,45 +186,70 @@
       -webkit-tap-highlight-color: transparent;
     }
     .ph-tab.active {
-      color: var(--teal);
-      border-bottom-color: var(--teal);
+      color: var(--white);
+      border-bottom-color: var(--red);
     }
 
     /* ── step bar ── */
     .ph-stepbar {
       display: flex;
-      gap: 5px;
-      padding: 12px 16px 0;
-      background: var(--card);
+      gap: 0;
+      padding: 0;
+      background: var(--teal);
     }
     .ph-step {
       flex: 1;
       height: 3px;
-      border-radius: 2px;
-      background: #e5e5e5;
-      transition: background 0.3s;
+      background: rgba(255,255,255,0.18);
+      transition: background 0.4s;
     }
-    .ph-step.done { background: var(--teal); }
+    .ph-step.done { background: var(--red); }
 
     /* ── card body ── */
     .ph-card {
-      background: var(--card);
-      padding: 16px 16px 22px;
+      background: #f4f6f5;
+      padding: 0 0 24px;
+    }
+
+    /* ── section blocks ── */
+    .ph-section {
+      background: var(--white);
+      margin: 12px 14px 0;
+      border-radius: 14px;
+      padding: 16px 16px 8px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .ph-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--teal);
+      border-radius: 0 2px 2px 0;
     }
 
     /* ── section label ── */
     .ph-label {
       font-size: 9px;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       color: var(--teal);
       text-transform: uppercase;
-      margin: 0 0 11px;
-      padding-bottom: 7px;
-      border-bottom: 1.5px solid var(--teal);
+      margin: 0 0 14px;
       display: flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
+    }
+    .ph-label-icon {
+      width: 24px; height: 24px;
+      border-radius: 7px;
+      background: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
     .ph-label-dot {
       width: 6px; height: 6px;
@@ -232,29 +257,34 @@
       background: var(--red);
       flex-shrink: 0;
     }
-    .ph-divider { height: 1px; background: #f0f0f0; margin: 16px 0; }
+    .ph-divider { display: none; }
 
-    /* ── fields ── */
-    .ph-field { margin-bottom: 11px; }
+    /* ── floating label fields ── */
+    .ph-field {
+      margin-bottom: 12px;
+      position: relative;
+    }
     .ph-field label {
       display: block;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 4px;
-      font-weight: 500;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--teal);
+      text-transform: uppercase;
+      margin-bottom: 5px;
     }
     .ph-field input,
     .ph-field select {
       width: 100%;
-      padding: 11px 13px;
-      font-size: 15px;
+      padding: 12px 14px;
+      font-size: 14px;
       font-family: 'DM Sans', Arial, sans-serif;
-      border: 1.5px solid var(--border);
+      border: 1.5px solid #e8ecea;
       border-radius: 10px;
-      background: var(--subtle);
+      background: #f8faf9;
       color: var(--text);
       outline: none;
-      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+      transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
       -webkit-appearance: auto;
       appearance: auto;
     }
@@ -262,10 +292,10 @@
     .ph-field select:focus {
       border-color: var(--teal);
       background: var(--white);
-      box-shadow: 0 0 0 3px rgba(10,61,53,0.08);
+      box-shadow: 0 0 0 3px rgba(10,61,53,0.09);
     }
     .ph-field input[readonly] {
-      background: #efefef;
+      background: #f0f2f1;
       color: var(--muted);
       cursor: default;
     }
@@ -294,19 +324,19 @@
     /* ── actions ── */
     .ph-actions {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
       gap: 10px;
-      margin-top: 12px;
+      margin: 16px 14px 0;
     }
     .ph-btn {
       width: 100%;
-      padding: 13px;
+      padding: 15px;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-family: 'DM Sans', Arial, sans-serif;
       font-weight: 700;
       font-size: 15px;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
       cursor: pointer;
       transition: transform 0.1s, opacity 0.15s, box-shadow 0.15s;
       -webkit-tap-highlight-color: transparent;
@@ -314,15 +344,21 @@
     .ph-btn-primary {
       background: var(--teal);
       color: var(--white);
-      box-shadow: 0 4px 14px rgba(10,61,53,0.25);
+      box-shadow: 0 6px 20px rgba(10,61,53,0.28);
     }
     .ph-btn-primary:active { transform: scale(0.97); }
+    .ph-btn-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+    }
     .ph-btn-secondary {
-      background: #efefef;
+      background: var(--white);
       color: #666;
       border: 1.5px solid var(--border);
       font-size: 13px;
-      font-weight: 500;
+      font-weight: 600;
+      border-radius: 12px;
     }
     .ph-btn-full {
       grid-column: 1 / -1;
@@ -333,7 +369,7 @@
       color: var(--red);
       text-align: center;
       min-height: 18px;
-      margin-top: 9px;
+      margin: 8px 14px 0;
       line-height: 1.4;
     }
 
@@ -341,7 +377,7 @@
     .ph-success {
       display: none;
       text-align: center;
-      padding: 36px 16px 24px;
+      padding: 28px 14px 10px;
     }
     .ph-success-ring {
       width: 72px; height: 72px;
@@ -374,23 +410,27 @@
 
     /* ── conf card ── */
     .ph-conf {
-      margin-top: 16px;
-      padding: 4px 14px;
-      background: var(--subtle);
-      border-radius: 12px;
+      margin-top: 14px;
+      background: var(--white);
+      border-radius: 14px;
       text-align: left;
       border: 1.5px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
     .ph-conf-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 9px 0;
+      padding: 10px 14px;
     }
-    .ph-conf-row + .ph-conf-row { border-top: 1px solid #efefef; }
+    .ph-conf-row + .ph-conf-row { border-top: 1px solid #f0f0f0; }
     .ph-conf-lbl {
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
       flex-shrink: 0;
       margin-right: 10px;
     }
@@ -405,28 +445,25 @@
 
     /* highlighted row */
     .ph-conf-row.highlight {
-      background: rgba(10,61,53,0.07);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin: 6px -14px 6px;
+      background: var(--teal);
+      padding: 12px 14px;
       border-top: none !important;
     }
     .ph-conf-row.highlight .ph-conf-lbl {
-      color: var(--teal);
-      font-weight: 700;
-      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+      font-size: 10px;
     }
     .ph-conf-row.highlight .ph-conf-val {
-      color: var(--teal);
-      font-size: 15px;
+      color: var(--white);
+      font-size: 14px;
     }
 
     /* ── check warranty view ── */
-    #checkView { display: none; }
+    #checkView { display: none; padding: 0; }
 
     .ph-check-hero {
       text-align: center;
-      padding: 18px 0 16px;
+      padding: 20px 16px 12px;
     }
     .ph-check-hero-icon {
       width: 54px; height: 54px;
@@ -591,106 +628,144 @@
     <div id="formView">
 
       <!-- PRODUCT / SERIAL -->
-      <div class="ph-label"><span class="ph-label-dot"></span>Product Details</div>
-      <div class="ph-field">
-        <label>Serial Number *</label>
-        <div class="ph-srl">
-          <input id="r_serial"
-                 placeholder="e.g. PHM-2024-XXXXXX"
-                 required
-                 autocomplete="off"
-                 style="text-transform:uppercase;"
-                 oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
-          <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="11" width="18" height="11" rx="2"/>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-          </svg>
+      <div class="ph-section">
+        <div class="ph-label">
+          <div class="ph-label-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          Product Details
+        </div>
+        <div class="ph-field">
+          <label>Serial Number *</label>
+          <div class="ph-srl">
+            <input id="r_serial"
+                   placeholder="e.g. PHM-2024-XXXXXX"
+                   required
+                   autocomplete="off"
+                   style="text-transform:uppercase;"
+                   oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+            <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
         </div>
       </div>
-
-      <div class="ph-divider"></div>
 
       <!-- CUSTOMER INFO -->
-      <div class="ph-label"><span class="ph-label-dot"></span>Customer Info</div>
-      <div class="ph-field">
-        <label>Full Name *</label>
-        <input id="r_name" placeholder="Your full name" required oninput="updateStepBar()" />
+      <div class="ph-section">
+        <div class="ph-label">
+          <div class="ph-label-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          Customer Info
+        </div>
+        <div class="ph-field">
+          <label>Full Name *</label>
+          <input id="r_name" placeholder="Your full name" required oninput="updateStepBar()" />
+        </div>
+        <div class="ph-field">
+          <label>Phone Number *</label>
+          <input id="r_phone" placeholder="+91 XXXXX XXXXX" type="tel" required oninput="updateStepBar()" />
+        </div>
       </div>
-      <div class="ph-field">
-        <label>Phone Number *</label>
-        <input id="r_phone" placeholder="+91 XXXXX XXXXX" type="tel" required oninput="updateStepBar()" />
-      </div>
-
-      <div class="ph-divider"></div>
 
       <!-- CAR DETAILS -->
-      <div class="ph-label"><span class="ph-label-dot"></span>Car Details</div>
-      <div class="ph-car-grid">
-        <div class="ph-field">
-          <label>Car Brand *</label>
-          <input id="r_carbrand" placeholder="e.g. Maruti, Hyundai" required oninput="updateStepBar()" />
+      <div class="ph-section">
+        <div class="ph-label">
+          <div class="ph-label-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h13l4 4v4a2 2 0 0 1-2 2h-2"/>
+              <circle cx="8.5" cy="17" r="2.5"/>
+              <circle cx="17.5" cy="17" r="2.5"/>
+              <path d="M3 9h13"/>
+            </svg>
+          </div>
+          Car Details
         </div>
-        <div class="ph-field">
-          <label>Car Model *</label>
-          <input id="r_carmodel" placeholder="e.g. Swift, Creta" required oninput="updateStepBar()" />
-        </div>
-        <div class="ph-field">
-          <label>Year</label>
-          <input id="r_caryear" placeholder="e.g. 2022" type="number" min="2000" max="2030" />
-        </div>
-        <div class="ph-field">
-          <label>Car Color</label>
-          <input id="r_carcolor" placeholder="e.g. White" />
-        </div>
-        <div class="ph-field ph-car-full">
-          <label>Registration Number *</label>
-          <input id="r_regnumber"
-                 placeholder="e.g. KL-07-AB-1234"
-                 required
-                 style="text-transform:uppercase;"
-                 oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+        <div class="ph-car-grid">
+          <div class="ph-field">
+            <label>Car Brand *</label>
+            <input id="r_carbrand" placeholder="e.g. Maruti, Hyundai" required oninput="updateStepBar()" />
+          </div>
+          <div class="ph-field">
+            <label>Car Model *</label>
+            <input id="r_carmodel" placeholder="e.g. Swift, Creta" required oninput="updateStepBar()" />
+          </div>
+          <div class="ph-field">
+            <label>Year</label>
+            <input id="r_caryear" placeholder="e.g. 2022" type="number" min="2000" max="2030" />
+          </div>
+          <div class="ph-field">
+            <label>Car Color</label>
+            <input id="r_carcolor" placeholder="e.g. White" />
+          </div>
+          <div class="ph-field ph-car-full">
+            <label>Registration Number *</label>
+            <input id="r_regnumber"
+                   placeholder="e.g. KL-07-AB-1234"
+                   required
+                   style="text-transform:uppercase;"
+                   oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+          </div>
         </div>
       </div>
-
-      <div class="ph-divider"></div>
 
       <!-- PURCHASE DETAILS -->
-      <div class="ph-label"><span class="ph-label-dot"></span>Purchase Details</div>
-      <div class="ph-row">
-        <div class="ph-field">
-          <label>Purchase Date</label>
-          <input id="r_date" placeholder="Auto-filled" readonly />
+      <div class="ph-section">
+        <div class="ph-label">
+          <div class="ph-label-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <rect x="1" y="4" width="22" height="16" rx="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          Purchase Details
+        </div>
+        <div class="ph-row">
+          <div class="ph-field">
+            <label>Purchase Date</label>
+            <input id="r_date" placeholder="Auto-filled" readonly />
+          </div>
+          <div class="ph-field">
+            <label>Location *</label>
+            <select id="r_location" required onchange="updateStepBar()">
+              <option value="">Select</option>
+              <option>Out of Kerala</option>
+              <option>Alappuzha</option>
+              <option>Ernakulam</option>
+              <option>Idukki</option>
+              <option>Kannur</option>
+              <option>Kasaragod</option>
+              <option>Kollam</option>
+              <option>Kottayam</option>
+              <option>Kozhikode</option>
+              <option>Malappuram</option>
+              <option>Palakkad</option>
+              <option>Pathanamthitta</option>
+              <option>Thiruvananthapuram</option>
+              <option>Thrissur</option>
+              <option>Wayanad</option>
+            </select>
+          </div>
         </div>
         <div class="ph-field">
-          <label>Location *</label>
-          <select id="r_location" required onchange="updateStepBar()">
-            <option value="">Select</option>
-            <option>Out of Kerala</option>
-            <option>Alappuzha</option>
-            <option>Ernakulam</option>
-            <option>Idukki</option>
-            <option>Kannur</option>
-            <option>Kasaragod</option>
-            <option>Kollam</option>
-            <option>Kottayam</option>
-            <option>Kozhikode</option>
-            <option>Malappuram</option>
-            <option>Palakkad</option>
-            <option>Pathanamthitta</option>
-            <option>Thiruvananthapuram</option>
-            <option>Thrissur</option>
-            <option>Wayanad</option>
-          </select>
+          <label>Shop / Dealer Name *</label>
+          <input id="r_shop" placeholder="Where did you purchase?" required oninput="updateStepBar()" />
         </div>
-      </div>
-      <div class="ph-field">
-        <label>Shop / Dealer Name *</label>
-        <input id="r_shop" placeholder="Where did you purchase?" required oninput="updateStepBar()" />
       </div>
 
       <div class="ph-actions">
-        <button class="ph-btn ph-btn-primary" id="registerBtn" onclick="onRegister()">Register Warranty</button>
-        <button class="ph-btn ph-btn-secondary" onclick="clearForm()">Clear</button>
+        <div class="ph-btn-row">
+          <button class="ph-btn ph-btn-primary" id="registerBtn" onclick="onRegister()">Register Warranty</button>
+          <button class="ph-btn ph-btn-secondary" onclick="clearForm()">Clear</button>
+        </div>
       </div>
       <div class="ph-status" id="r_status"></div>
 
@@ -731,7 +806,7 @@
           <span class="ph-conf-val" id="conf_date"></span>
         </div>
       </div>
-      <button class="ph-btn ph-btn-secondary" onclick="resetForm()" style="margin-top:18px; width:100%;">
+      <button class="ph-btn ph-btn-secondary" onclick="resetForm()" style="margin-top:14px; width:100%;">
         ＋ Register Another
       </button>
     </div><!-- /successView -->
@@ -749,23 +824,34 @@
         <p>Enter your <strong>Serial Number</strong> or<br><strong>Car Registration Number</strong> to verify</p>
       </div>
 
-      <div class="ph-label"><span class="ph-label-dot"></span>Warranty Lookup</div>
-      <div class="ph-field">
-        <label>Serial No. or Car Registration No.</label>
-        <div class="ph-srl">
-          <input id="chk_query"
-                 placeholder="e.g. PHM-2024-XXXXXX or KL-07-AB-1234"
-                 style="text-transform:uppercase;"
-                 autocomplete="off"
-                 oninput="this.value=this.value.toUpperCase()"
-                 onkeydown="if(event.key==='Enter') onCheck()" />
-          <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-          </svg>
+      <div class="ph-section">
+        <div class="ph-label">
+          <div class="ph-label-icon">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
+          Warranty Lookup
+        </div>
+        <div class="ph-field">
+          <label>Serial No. or Car Registration No.</label>
+          <div class="ph-srl">
+            <input id="chk_query"
+                   placeholder="e.g. PHM-2024-XXXXXX or KL-07-AB-1234"
+                   style="text-transform:uppercase;"
+                   autocomplete="off"
+                   oninput="this.value=this.value.toUpperCase()"
+                   onkeydown="if(event.key==='Enter') onCheck()" />
+            <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </div>
         </div>
       </div>
-      <div class="ph-actions" style="grid-template-columns: 1fr; margin-top: 2px;">
+
+      <div class="ph-actions">
         <button class="ph-btn ph-btn-primary" id="checkBtn" onclick="onCheck()">Check Warranty Status</button>
       </div>
       <div class="ph-status" id="chk_status"></div>
@@ -777,8 +863,8 @@
       </div>
 
       <!-- Result: Found -->
-      <div id="chk_result" style="display:none; margin-top:8px;">
-        <div style="text-align:center; margin-bottom:6px;">
+      <div id="chk_result" style="display:none; margin: 12px 14px 0;">
+        <div style="text-align:center; margin-bottom:8px;">
           <div class="ph-found-badge">
             <div class="ph-found-badge-dot"></div>
             WARRANTY ACTIVE
@@ -822,11 +908,11 @@
             <span class="ph-conf-val" id="chk_date"></span>
           </div>
         </div>
-        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:14px; width:100%;">Check Another</button>
+        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:12px; width:100%;">Check Another</button>
       </div>
 
       <!-- Result: Not Found -->
-      <div id="chk_notfound" style="display:none; margin-top:10px;">
+      <div id="chk_notfound" style="display:none; margin: 10px 14px 0;">
         <div class="ph-not-found">
           <div class="ph-not-found-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5">
