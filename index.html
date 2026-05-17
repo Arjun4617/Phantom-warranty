@@ -59,118 +59,120 @@
 
     /* ── Hero / Header ── */
     .ph-header {
-      background: var(--ink-1);
-      padding: 52px 24px 28px;
+      background: #0e0e0f;
+      padding: 44px 24px 32px;
       position: relative;
       overflow: hidden;
     }
+    /* Subtle noise texture */
     .ph-header::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 120% 0%, rgba(10,61,53,.35) 0%, transparent 60%),
-                  radial-gradient(ellipse at -20% 100%, rgba(26,86,176,.12) 0%, transparent 55%);
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 180px;
       pointer-events: none;
+      opacity: 0.6;
     }
+    /* Thin accent line at top */
     .ph-header::after {
       content: '';
       position: absolute;
-      top: 0; right: 0;
-      border-style: solid;
-      border-width: 0 90px 90px 0;
-      border-color: transparent rgba(192,57,43,.18) transparent transparent;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--red) 0%, var(--blue) 100%);
+      opacity: 0.7;
     }
-    /* decorative circles */
-    .ph-header-circle1 {
-      position: absolute;
-      bottom: -30px; left: -30px;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      border: 20px solid rgba(255,255,255,0.03);
-      pointer-events: none;
-    }
-    .ph-header-circle2 {
-      position: absolute;
-      bottom: 10px; left: 55px;
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      border: 10px solid rgba(255,255,255,0.04);
-      pointer-events: none;
-    }
+    /* Hide old decorative circles */
+    .ph-header-circle1,
+    .ph-header-circle2 { display: none; }
+
     .ph-header-inner { position: relative; z-index: 1; }
 
     .ph-brand-row {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 28px;
     }
     .ph-logo-text {
-      font-size: 38px;
+      font-size: 22px;
       font-weight: 700;
       font-style: italic;
       color: var(--white);
-      letter-spacing: -1px;
+      letter-spacing: 3px;
       line-height: 1;
+      text-transform: uppercase;
     }
-    .ph-underline { display: flex; margin-top: 6px; }
-    .ph-underline span { height: 3px; width: 48px; display: block; }
+    .ph-underline { display: flex; margin-top: 5px; }
+    .ph-underline span { height: 1.5px; width: 28px; display: block; }
     .ph-underline .r { background: var(--red); }
     .ph-underline .b { background: var(--blue); }
     .ph-sub {
-      font-size: 10px;
-      color: rgba(255,255,255,0.38);
-      letter-spacing: 2.5px;
-      margin-top: 6px;
+      font-size: 9px;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 2px;
+      margin-top: 7px;
       text-transform: uppercase;
     }
-    .ph-badge { text-align: right; padding-top: 4px; }
-    .ph-badge-top {
-      font-size: 11px; font-weight: 600;
-      color: rgba(255,255,255,.55); letter-spacing: .5px;
+    .ph-badge {
+      text-align: right;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 6px 10px;
     }
-    .ph-badge-bot { font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px; }
+    .ph-badge-top {
+      font-size: 9px; font-weight: 600;
+      color: rgba(255,255,255,.35); letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .ph-badge-bot { font-size: 9px; color: rgba(255,255,255,.18); margin-top: 2px; letter-spacing: .5px; }
 
     .ph-hero-label {
-      font-size: 12px; font-weight: 600; letter-spacing: .6px;
-      color: rgba(255,255,255,.38); text-transform: uppercase; margin-bottom: 8px;
+      display: none;
     }
     .ph-hero h1 {
-      font-size: clamp(28px, 8vw, 36px);
-      font-weight: 700; letter-spacing: -.6px;
-      color: #fff; line-height: 1.08;
+      font-size: clamp(30px, 9vw, 40px);
+      font-weight: 300;
+      letter-spacing: -1px;
+      color: #fff;
+      line-height: 1.05;
       transition: all 0.25s;
     }
-    .ph-hero h1 span { color: rgba(255,255,255,.35); font-weight: 300; }
+    .ph-hero h1 strong { font-weight: 700; }
+    .ph-hero h1 span { color: rgba(255,255,255,.28); font-weight: 200; display: block; }
     .ph-hero p {
-      font-size: 14px; color: rgba(255,255,255,.38);
-      margin-top: 8px; line-height: 1.5;
+      font-size: 13px; color: rgba(255,255,255,.3);
+      margin-top: 10px; line-height: 1.6;
       transition: all 0.25s;
+      letter-spacing: .1px;
     }
 
     /* ── Segmented control ── */
     .ph-seg-wrap {
-      background: var(--ink-1);
-      padding: 0 16px 16px;
+      background: #0e0e0f;
+      padding: 0 16px 18px;
     }
     .ph-seg-ctrl {
       display: grid; grid-template-columns: 1fr 1fr;
-      background: rgba(255,255,255,.1);
+      background: rgba(255,255,255,.06);
       border-radius: var(--r-sm); padding: 3px; position: relative;
+      border: 1px solid rgba(255,255,255,.07);
     }
     .ph-tab {
-      padding: 8px 4px; font-family: var(--font); font-size: 13px; font-weight: 600;
-      color: rgba(255,255,255,.5); background: none; border: none;
+      padding: 9px 4px; font-family: var(--font); font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,.35); background: none; border: none;
       border-radius: calc(var(--r-sm) - 3px); cursor: pointer;
       transition: color .2s var(--ease); position: relative; z-index: 1;
       -webkit-tap-highlight-color: transparent;
       display: flex; align-items: center; justify-content: center; gap: 5px;
+      letter-spacing: .1px;
     }
     .ph-tab.active { color: var(--ink-1); }
     .ph-seg-indicator {
       position: absolute; top: 3px; bottom: 3px;
       width: calc(50% - 3px); left: 3px;
       background: #fff; border-radius: calc(var(--r-sm) - 3px);
-      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      box-shadow: 0 1px 6px rgba(0,0,0,.25);
       transition: transform .25s var(--ease); pointer-events: none;
     }
     .ph-seg-indicator.right { transform: translateX(calc(100%)); }
@@ -508,7 +510,7 @@
       </div>
       <div class="ph-hero">
         <div class="ph-hero-label">Genuine Coverage</div>
-        <h1 id="heroTitle">Warranty<br><span>Registration</span></h1>
+        <h1 id="heroTitle"><strong>Warranty</strong><span>Registration</span></h1>
         <p id="heroSub">Register your Phantom film for genuine support &amp; service</p>
       </div>
     </div>
@@ -857,13 +859,13 @@
       const showSuccess = sv.style.display === 'block';
       fv.style.display  = showSuccess ? 'none' : 'block';
       sv.style.display  = showSuccess ? 'block' : 'none';
-      document.getElementById('heroTitle').innerHTML  = 'Warranty<br><span>Registration</span>';
+      document.getElementById('heroTitle').innerHTML  = '<strong>Warranty</strong><span>Registration</span>';
       document.getElementById('heroSub').textContent  = 'Register your Phantom film for genuine support & service';
     } else {
       fv.style.display = 'none';
       sv.style.display = 'none';
       cv.style.display = 'block';
-      document.getElementById('heroTitle').innerHTML  = 'Check<br><span>Warranty</span>';
+      document.getElementById('heroTitle').innerHTML  = '<strong>Check</strong><span>Warranty Status</span>';
       document.getElementById('heroSub').textContent  = 'Verify your Phantom film warranty status';
     }
   }
