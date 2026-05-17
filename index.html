@@ -1,77 +1,83 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Phantom — Warranty Registration</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --teal:    #0a3d35;
-      --teal2:   #0d4f44;
-      --teal-lt: rgba(10,61,53,0.08);
-      --red:     #c0392b;
-      --blue:    #1a56b0;
-      --white:   #ffffff;
-      --bg:      #eef1f0;
-      --card:    #ffffff;
-      --border:  #e0e0e0;
-      --subtle:  #f7f9f8;
-      --muted:   #888888;
-      --text:    #1a1a1a;
-      --success: #1a7a4a;
+      --bg:           #f5f5f7;
+      --surface:      #ffffff;
+      --surface-2:    #f5f5f7;
+      --ink-1:        #1d1d1f;
+      --ink-2:        #6e6e73;
+      --ink-3:        #a1a1a6;
+      --separator:    rgba(60,60,67,.12);
+      --sep-opaque:   #e5e5ea;
+      --teal:         #0a3d35;
+      --teal2:        #0d4f44;
+      --teal-lt:      rgba(10,61,53,0.08);
+      --red:          #c0392b;
+      --red-dim:      rgba(192,57,43,.08);
+      --red-mid:      rgba(192,57,43,.15);
+      --blue:         #1a56b0;
+      --ok:           #34c759;
+      --ok-bg:        rgba(52,199,89,.1);
+      --success:      #1a7a4a;
+      --white:        #ffffff;
+      --r-sm:  10px;
+      --r-md:  13px;
+      --r-lg:  18px;
+      --r-xl:  24px;
+      --r-pill:100px;
+      --shadow-card: 0 2px 12px rgba(0,0,0,.07), 0 0 0 .5px rgba(0,0,0,.05);
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+      --ease: cubic-bezier(.4,0,.2,1);
+      --spring: cubic-bezier(.34,1.56,.64,1);
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      font-family: 'DM Sans', Arial, sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font);
       background: var(--bg);
+      color: var(--ink-1);
+      min-height: 100dvh;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── wrapper ── */
+    /* ── Layout ── */
     .pw {
       width: 100%;
-      max-width: 480px;
+      max-width: 430px;
       margin: 0 auto;
-      padding-bottom: 32px;
+      padding-bottom: 48px;
+    }
+    @media (min-width: 500px) {
+      body { padding: 40px 20px 60px; display: flex; justify-content: center; align-items: flex-start; }
+      .pw { border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,.14); }
     }
 
-    @media (min-width: 520px) {
-      body { padding: 28px 16px; }
-      .pw {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      }
-    }
-
-    /* ── header ── */
+    /* ── Hero / Header ── */
     .ph-header {
-      background: var(--teal);
-      padding: 0;
+      background: var(--ink-1);
+      padding: 52px 24px 28px;
       position: relative;
       overflow: hidden;
     }
     .ph-header::before {
       content: '';
-      position: absolute;
-      top: 0; right: 0;
-      border-style: solid;
-      border-width: 0 120px 120px 0;
-      border-color: transparent var(--blue) transparent transparent;
-      opacity: 0.5;
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 120% 0%, rgba(10,61,53,.35) 0%, transparent 60%),
+                  radial-gradient(ellipse at -20% 100%, rgba(26,86,176,.12) 0%, transparent 55%);
+      pointer-events: none;
     }
     .ph-header::after {
       content: '';
       position: absolute;
       top: 0; right: 0;
       border-style: solid;
-      border-width: 0 72px 72px 0;
-      border-color: transparent rgba(255,255,255,0.13) transparent transparent;
+      border-width: 0 90px 90px 0;
+      border-color: transparent rgba(192,57,43,.18) transparent transparent;
     }
     /* decorative circles */
     .ph-header-circle1 {
@@ -79,7 +85,7 @@
       bottom: -30px; left: -30px;
       width: 120px; height: 120px;
       border-radius: 50%;
-      border: 20px solid rgba(255,255,255,0.04);
+      border: 20px solid rgba(255,255,255,0.03);
       pointer-events: none;
     }
     .ph-header-circle2 {
@@ -87,471 +93,179 @@
       bottom: 10px; left: 55px;
       width: 60px; height: 60px;
       border-radius: 50%;
-      border: 10px solid rgba(255,255,255,0.05);
+      border: 10px solid rgba(255,255,255,0.04);
       pointer-events: none;
     }
-    .ph-header-inner {
-      position: relative;
-      z-index: 1;
-      padding: 24px 20px 0;
-    }
+    .ph-header-inner { position: relative; z-index: 1; }
+
     .ph-brand-row {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
+      margin-bottom: 20px;
     }
     .ph-logo-text {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 40px;
-      font-weight: 900;
+      font-size: 38px;
+      font-weight: 700;
       font-style: italic;
       color: var(--white);
-      letter-spacing: 2px;
+      letter-spacing: -1px;
       line-height: 1;
     }
-    .ph-underline {
-      display: flex;
-      margin-top: 5px;
-    }
-    .ph-underline span {
-      height: 3px;
-      width: 52px;
-      display: block;
-    }
+    .ph-underline { display: flex; margin-top: 6px; }
+    .ph-underline span { height: 3px; width: 48px; display: block; }
     .ph-underline .r { background: var(--red); }
     .ph-underline .b { background: var(--blue); }
     .ph-sub {
-      font-size: 9.5px;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 3px;
+      font-size: 10px;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 2.5px;
       margin-top: 6px;
       text-transform: uppercase;
     }
     .ph-badge { text-align: right; padding-top: 4px; }
     .ph-badge-top {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 1px;
+      font-size: 11px; font-weight: 600;
+      color: rgba(255,255,255,.55); letter-spacing: .5px;
     }
-    .ph-badge-bot {
-      font-size: 10px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 3px;
-    }
-    .ph-hero {
-      margin-top: 18px;
-      padding-bottom: 20px;
+    .ph-badge-bot { font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px; }
+
+    .ph-hero-label {
+      font-size: 12px; font-weight: 600; letter-spacing: .6px;
+      color: rgba(255,255,255,.38); text-transform: uppercase; margin-bottom: 8px;
     }
     .ph-hero h1 {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.2;
+      font-size: clamp(28px, 8vw, 36px);
+      font-weight: 700; letter-spacing: -.6px;
+      color: #fff; line-height: 1.08;
       transition: all 0.25s;
     }
+    .ph-hero h1 span { color: rgba(255,255,255,.35); font-weight: 300; }
     .ph-hero p {
-      font-size: 12px;
-      color: rgba(255,255,255,0.6);
-      margin-top: 4px;
+      font-size: 14px; color: rgba(255,255,255,.38);
+      margin-top: 8px; line-height: 1.5;
       transition: all 0.25s;
     }
-    .ph-red-bar { height: 4px; background: var(--red); }
 
-    /* ── tabs ── */
-    .ph-tabs {
-      display: flex;
-      background: var(--teal);
-      border-bottom: none;
-      padding: 0 10px;
+    /* ── Segmented control ── */
+    .ph-seg-wrap {
+      background: var(--ink-1);
+      padding: 0 16px 16px;
+    }
+    .ph-seg-ctrl {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: rgba(255,255,255,.1);
+      border-radius: var(--r-sm); padding: 3px; position: relative;
     }
     .ph-tab {
-      flex: 1;
-      padding: 11px 6px 10px;
-      border: none;
-      background: none;
-      font-family: 'DM Sans', Arial, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.5);
-      cursor: pointer;
-      border-bottom: 2.5px solid transparent;
-      margin-bottom: 0;
-      transition: color 0.18s, border-color 0.18s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
+      padding: 8px 4px; font-family: var(--font); font-size: 13px; font-weight: 600;
+      color: rgba(255,255,255,.5); background: none; border: none;
+      border-radius: calc(var(--r-sm) - 3px); cursor: pointer;
+      transition: color .2s var(--ease); position: relative; z-index: 1;
       -webkit-tap-highlight-color: transparent;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
     }
-    .ph-tab.active {
-      color: var(--white);
-      border-bottom-color: var(--red);
+    .ph-tab.active { color: var(--ink-1); }
+    .ph-seg-indicator {
+      position: absolute; top: 3px; bottom: 3px;
+      width: calc(50% - 3px); left: 3px;
+      background: #fff; border-radius: calc(var(--r-sm) - 3px);
+      box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      transition: transform .25s var(--ease); pointer-events: none;
     }
+    .ph-seg-indicator.right { transform: translateX(calc(100%)); }
 
-    /* ── step bar ── */
+    /* ── Step dots ── */
     .ph-stepbar {
-      display: flex;
-      gap: 0;
-      padding: 0;
-      background: var(--teal);
+      display: flex; justify-content: center; gap: 6px;
+      padding: 16px 0 4px;
+      background: var(--bg);
     }
     .ph-step {
-      flex: 1;
-      height: 3px;
-      background: rgba(255,255,255,0.18);
-      transition: background 0.4s;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sep-opaque); transition: all .3s var(--ease);
     }
-    .ph-step.done { background: var(--red); }
+    .ph-step.done { background: var(--red); transform: scale(1.2); }
 
-    /* ── card body ── */
-    .ph-card {
-      background: #f4f6f5;
-      padding: 0 0 24px;
-    }
+    /* ── Page body ── */
+    .ph-card { background: var(--bg); }
 
-    /* ── section blocks ── */
-    .ph-section {
-      background: var(--white);
-      margin: 12px 14px 0;
-      border-radius: 14px;
-      padding: 16px 16px 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
-      position: relative;
-      overflow: hidden;
+    /* ── Groups (iOS Settings style) ── */
+    .group { margin: 16px 16px 0; }
+    .group-label {
+      font-size: 11px; font-weight: 600; letter-spacing: .3px;
+      color: var(--ink-2); text-transform: uppercase;
+      padding: 0 4px; margin-bottom: 7px;
     }
-    .ph-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--teal);
-      border-radius: 0 2px 2px 0;
+    .group-card {
+      background: var(--surface); border-radius: var(--r-lg);
+      overflow: hidden; box-shadow: var(--shadow-card);
     }
+    .field-row {
+      display: flex; align-items: center;
+      padding: 0 16px; min-height: 52px; position: relative;
+    }
+    .field-row + .field-row::before {
+      content: ''; position: absolute; top: 0; left: 16px; right: 0;
+      height: .5px; background: var(--separator);
+    }
+    .field-row label {
+      font-size: 15px; font-weight: 400; color: var(--ink-1);
+      min-width: 110px; flex-shrink: 0; pointer-events: none; user-select: none;
+    }
+    .field-row input,
+    .field-row select {
+      flex: 1; border: none; outline: none; font-family: var(--font);
+      font-size: 15px; color: var(--ink-1); background: transparent;
+      text-align: right; padding: 14px 0;
+      -webkit-appearance: none; appearance: none; min-width: 0;
+    }
+    .field-row input::placeholder { color: var(--ink-3); }
+    .field-row select { cursor: pointer; }
+    .field-row input[readonly] { color: var(--ink-2); cursor: default; }
+    .field-row.has-select::after {
+      content: ''; width: 7px; height: 7px; flex-shrink: 0;
+      border-right: 1.5px solid var(--ink-3); border-bottom: 1.5px solid var(--ink-3);
+      transform: rotate(45deg) translateY(-3px); margin-left: 6px; pointer-events: none;
+    }
+    .field-icon { color: var(--ink-3); flex-shrink: 0; margin-left: 8px; }
 
-    /* ── section label ── */
-    .ph-label {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      color: var(--teal);
-      text-transform: uppercase;
-      margin: 0 0 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    /* two-column grid for car details */
+    .field-grid {
+      background: var(--surface); border-radius: var(--r-lg);
+      overflow: hidden; box-shadow: var(--shadow-card);
+      display: grid; grid-template-columns: 1fr 1fr;
     }
-    .ph-label-icon {
-      width: 24px; height: 24px;
-      border-radius: 7px;
-      background: var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .field-grid .field-row { border-right: .5px solid var(--separator); }
+    .field-grid .field-row:nth-child(even) { border-right: none; }
+    .field-grid .field-row + .field-row::before { left: 0; }
+    .field-grid .field-row label {
+      min-width: unset; font-size: 13px; color: var(--ink-2);
+      display: block; margin-bottom: 2px;
     }
-    .ph-label-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--red);
-      flex-shrink: 0;
+    .field-grid .field-row input {
+      text-align: left; font-size: 14px; font-weight: 500; padding: 0;
     }
-    .ph-divider { display: none; }
+    .field-grid .field-row { flex-direction: column; align-items: flex-start; padding: 12px 14px; min-height: 60px; justify-content: center; }
+    .field-grid .field-full { grid-column: 1 / -1; border-right: none !important; }
+    .field-grid .field-full .field-row { flex-direction: row; align-items: center; padding: 0 16px; min-height: 52px; }
+    .field-grid .field-full .field-row label { min-width: 130px; font-size: 15px; color: var(--ink-1); margin-bottom: 0; }
+    .field-grid .field-full .field-row input { text-align: right; font-size: 15px; font-weight: 400; }
 
-    /* ── floating label fields ── */
-    .ph-field {
-      margin-bottom: 12px;
-      position: relative;
-    }
-    .ph-field label {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--teal);
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-    .ph-field input,
-    .ph-field select {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 14px;
-      font-family: 'DM Sans', Arial, sans-serif;
-      border: 1.5px solid #e8ecea;
-      border-radius: 10px;
-      background: #f8faf9;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.18s, background 0.18s, box-shadow 0.18s;
-      -webkit-appearance: auto;
-      appearance: auto;
-    }
-    .ph-field input:focus,
-    .ph-field select:focus {
-      border-color: var(--teal);
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(10,61,53,0.09);
-    }
-    .ph-field input[readonly] {
-      background: #f0f2f1;
-      color: var(--muted);
-      cursor: default;
-    }
-    .ph-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    /* serial input with icon */
-    .ph-srl { position: relative; }
-    .ph-srl input { padding-right: 38px; }
-    .ph-srl-icon {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
-    }
-
-    /* car grid */
-    .ph-car-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    .ph-car-full { grid-column: 1 / -1; }
-
-    /* ── actions ── */
-    .ph-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin: 16px 14px 0;
-    }
+    /* ── CTA ── */
+    .ph-actions { margin: 20px 16px 0; }
     .ph-btn {
-      width: 100%;
-      padding: 15px;
-      border: none;
-      border-radius: 12px;
-      font-family: 'DM Sans', Arial, sans-serif;
-      font-weight: 700;
-      font-size: 15px;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      transition: transform 0.1s, opacity 0.15s, box-shadow 0.15s;
-      -webkit-tap-highlight-color: transparent;
+      width: 100%; padding: 16px; border: none; border-radius: var(--r-lg);
+      font-family: var(--font); font-size: 17px; font-weight: 600;
+      letter-spacing: -.2px; cursor: pointer;
+      transition: all .15s var(--ease); -webkit-tap-highlight-color: transparent;
     }
     .ph-btn-primary {
-      background: var(--teal);
-      color: var(--white);
-      box-shadow: 0 6px 20px rgba(10,61,53,0.28);
+      background: var(--teal); color: #fff;
+      box-shadow: 0 4px 20px rgba(10,61,53,.3);
     }
-    .ph-btn-primary:active { transform: scale(0.97); }
-    .ph-btn-row {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 10px;
-    }
-    .ph-btn-secondary {
-      background: var(--white);
-      color: #666;
-      border: 1.5px solid var(--border);
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: 12px;
-    }
-    .ph-btn-full {
-      grid-column: 1 / -1;
-    }
-
-    .ph-status {
-      font-size: 12px;
-      color: var(--red);
-      text-align: center;
-      min-height: 18px;
-      margin: 8px 14px 0;
-      line-height: 1.4;
-    }
-
-    /* ── success view ── */
-    .ph-success {
-      display: none;
-      text-align: center;
-      padding: 28px 14px 10px;
-    }
-    .ph-success-ring {
-      width: 72px; height: 72px;
-      border-radius: 50%;
-      border: 3px solid var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 16px;
-      background: rgba(10,61,53,0.06);
-      animation: popIn 0.4s ease;
-    }
-    @keyframes popIn {
-      0% { transform: scale(0.7); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-    .ph-success h3 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 22px;
-      font-style: italic;
-      font-weight: 900;
-      color: var(--teal);
-      margin: 0 0 6px;
-    }
-    .ph-success > p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── conf card ── */
-    .ph-conf {
-      margin-top: 14px;
-      background: var(--white);
-      border-radius: 14px;
-      text-align: left;
-      border: 1.5px solid var(--border);
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
-    .ph-conf-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 14px;
-    }
-    .ph-conf-row + .ph-conf-row { border-top: 1px solid #f0f0f0; }
-    .ph-conf-lbl {
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      flex-shrink: 0;
-      margin-right: 10px;
-    }
-    .ph-conf-val {
-      font-weight: 600;
-      color: var(--text);
-      font-size: 13px;
-      text-align: right;
-      max-width: 62%;
-      word-break: break-word;
-    }
-
-    /* highlighted row */
-    .ph-conf-row.highlight {
-      background: var(--teal);
-      padding: 12px 14px;
-      border-top: none !important;
-    }
-    .ph-conf-row.highlight .ph-conf-lbl {
-      color: rgba(255,255,255,0.65);
-      font-size: 10px;
-    }
-    .ph-conf-row.highlight .ph-conf-val {
-      color: var(--white);
-      font-size: 14px;
-    }
-
-    /* ── check warranty view ── */
-    #checkView { display: none; padding: 0; }
-
-    .ph-check-hero {
-      text-align: center;
-      padding: 20px 16px 12px;
-    }
-    .ph-check-hero-icon {
-      width: 54px; height: 54px;
-      border-radius: 50%;
-      background: var(--teal-lt);
-      border: 2px solid rgba(10,61,53,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 11px;
-    }
-    .ph-check-hero p {
-      font-size: 12.5px;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    /* found badge */
-    .ph-found-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(26,122,74,0.1);
-      color: var(--success);
-      border: 1px solid rgba(26,122,74,0.2);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      margin-bottom: 10px;
-    }
-    .ph-found-badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--success);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0.3; }
-    }
-
-    /* not found */
-    .ph-not-found {
-      text-align: center;
-      padding: 20px 0;
-    }
-    .ph-not-found-icon {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: rgba(192,57,43,0.08);
-      border: 2px solid rgba(192,57,43,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
-    }
-    .ph-not-found p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .ph-not-found strong { color: var(--text); }
-
-    /* loading */
-    .ph-loading {
-      text-align: center;
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    .ph-spinner {
-      width: 28px; height: 28px;
-      border: 3px solid #e0e0e0;
-      border-top-color: var(--teal);
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-      margin: 0 auto 10px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── submitting state ── */
-    .ph-btn-primary.loading {
-      opacity: 0.7;
-      pointer-events: none;
-      position: relative;
-    }
+    .ph-btn-primary:active { transform: scale(.98); }
+    .ph-btn-primary.loading { opacity: 0.7; pointer-events: none; }
     .ph-btn-primary.loading::after {
       content: '';
       display: inline-block;
@@ -563,11 +277,136 @@
       margin-left: 8px;
       vertical-align: middle;
     }
+    .ph-btn-secondary {
+      width: 100%; margin-top: 10px; padding: 13px; border: none;
+      border-radius: var(--r-lg); background: var(--surface); color: var(--ink-2);
+      font-family: var(--font); font-size: 15px; font-weight: 500; cursor: pointer;
+      transition: background .15s; -webkit-tap-highlight-color: transparent;
+      box-shadow: var(--shadow-card);
+    }
+    .ph-btn-secondary:active { background: var(--sep-opaque); }
+    .ph-btn-row { display: grid; grid-template-columns: 1fr; }
+    .ph-status {
+      margin-top: 10px; font-size: 13px; font-weight: 500;
+      color: var(--red); text-align: center; min-height: 18px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Success view ── */
+    .ph-success {
+      display: none; padding: 52px 24px 36px; text-align: center;
+      background: var(--surface); animation: rise .4s var(--ease) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px) scale(.98); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0); }
+      to   { transform: scale(1); }
+    }
+    .ph-success-ring {
+      width: 72px; height: 72px; background: var(--ok-bg); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+    }
+    .ph-success-ring svg { animation: popIn .4s var(--spring) .15s both; }
+    .ph-success h3 {
+      font-size: 26px; font-weight: 700; letter-spacing: -.4px;
+      color: var(--ink-1); margin-bottom: 6px;
+    }
+    .ph-success > p { font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+    /* ── Conf list ── */
+    .ph-conf {
+      margin-top: 24px; background: var(--surface-2); border-radius: var(--r-lg);
+      overflow: hidden; text-align: left; box-shadow: var(--shadow-card);
+    }
+    .ph-conf-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 13px 16px; font-size: 15px;
+    }
+    .ph-conf-row + .ph-conf-row { border-top: .5px solid var(--separator); }
+    .ph-conf-lbl { color: var(--ink-2); font-size: 14px; }
+    .ph-conf-val { font-weight: 600; color: var(--ink-1); font-size: 14px; text-align: right; max-width: 60%; word-break: break-word; }
+    .ph-conf-row.highlight { background: var(--teal); }
+    .ph-conf-row.highlight .ph-conf-lbl { color: rgba(255,255,255,.55); }
+    .ph-conf-row.highlight .ph-conf-val { color: #fff; }
+
+    /* ── Check panel ── */
+    #checkView { display: none; }
+    .ph-check-hero { padding: 24px 16px 0; }
+    .ph-check-hero h2 { font-size: 22px; font-weight: 700; letter-spacing: -.4px; margin-bottom: 4px; }
+    .ph-check-hero p  { font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+
+    .search-group { margin: 16px 16px 0; display: flex; gap: 10px; align-items: stretch; }
+    .search-input {
+      flex: 1; padding: 13px 16px; border-radius: var(--r-md); border: none;
+      background: var(--surface); font-family: var(--font); font-size: 15px; font-weight: 600;
+      color: var(--ink-1); text-transform: uppercase; letter-spacing: .5px;
+      outline: none; box-shadow: var(--shadow-card); transition: box-shadow .2s;
+    }
+    .search-input:focus { box-shadow: 0 0 0 3px var(--teal-lt), 0 1px 4px rgba(0,0,0,.08); }
+    .search-input::placeholder { text-transform: none; font-weight: 400; letter-spacing: 0; color: var(--ink-3); }
+    .search-btn {
+      padding: 0 18px; border-radius: var(--r-md); border: none;
+      background: var(--teal); color: #fff; font-family: var(--font);
+      font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap;
+      transition: all .15s var(--ease); -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 3px 12px rgba(10,61,53,.28); display: flex; align-items: center; gap: 6px;
+    }
+    .search-btn:active { transform: scale(.96); }
+
+    .ph-loading {
+      display: none; align-items: center; justify-content: center;
+      gap: 10px; padding: 28px 0; font-size: 14px; color: var(--ink-2);
+    }
+    .ph-loading.show { display: flex; }
+    .ph-spinner {
+      width: 14px; height: 14px; border: 2px solid var(--sep-opaque);
+      border-top-color: var(--teal); border-radius: 50%;
+      animation: spin .7s linear infinite; flex-shrink: 0;
+    }
+    .ph-status { margin: 10px 16px 0; font-size: 13px; font-weight: 500; color: var(--red); text-align: center; min-height: 16px; }
+
+    /* result card */
+    .result-card {
+      margin: 16px 16px 0; border-radius: var(--r-lg); overflow: hidden;
+      box-shadow: var(--shadow-card); display: none;
+      animation: rise .3s var(--ease) both;
+    }
+    .result-card.show { display: block; }
+    .result-head { display: flex; align-items: center; gap: 12px; padding: 16px; }
+    .result-head.found    { background: var(--ok-bg); }
+    .result-head.notfound { background: rgba(192,57,43,.06); }
+    .result-badge {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .result-badge.found    { background: var(--ok); }
+    .result-badge.notfound { background: var(--red); }
+    .result-title { font-size: 17px; font-weight: 700; letter-spacing: -.2px; }
+    .result-title.found    { color: #1a7a36; }
+    .result-title.notfound { color: var(--red); }
+    .result-sub { font-size: 13px; margin-top: 2px; }
+    .result-sub.found    { color: #2d8a4a; }
+    .result-sub.notfound { color: #c05050; }
+    .result-grid { background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; }
+    .result-cell { padding: 13px 16px; border-top: .5px solid var(--separator); }
+    .result-cell.full { grid-column: 1 / -1; }
+    .result-cell:nth-child(odd):not(.full) { border-right: .5px solid var(--separator); }
+    .result-cell-lbl { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; color: var(--ink-3); margin-bottom: 3px; }
+    .result-cell-val { font-size: 14px; font-weight: 600; color: var(--ink-1); }
+
+    .ph-divider { display: none; }
+    .ph-section  { display: contents; }
+    .ph-label    { display: none; }
+  </style>
+
   </style>
 </head>
 <body>
-
 <div class="pw">
+
 
   <!-- HEADER -->
   <div class="ph-header">
@@ -589,36 +428,32 @@
         </div>
       </div>
       <div class="ph-hero">
-        <h1 id="heroTitle">Warranty<br>Registration</h1>
+        <div class="ph-hero-label">Genuine Coverage</div>
+        <h1 id="heroTitle">Warranty<br><span>Registration</span></h1>
         <p id="heroSub">Register your Phantom film for genuine support &amp; service</p>
       </div>
     </div>
-    <div class="ph-red-bar"></div>
   </div>
 
-  <!-- TABS -->
-  <div class="ph-tabs">
-    <button class="ph-tab active" id="tabRegister" onclick="switchTab('register')">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-      </svg>
-      REGISTER
-    </button>
-    <button class="ph-tab" id="tabCheck" onclick="switchTab('check')">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <circle cx="11" cy="11" r="8"/>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      CHECK WARRANTY
-    </button>
-  </div>
-
-  <!-- STEP BAR -->
-  <div class="ph-stepbar" id="stepBarWrap">
-    <div class="ph-step done" id="s1"></div>
-    <div class="ph-step" id="s2"></div>
-    <div class="ph-step" id="s3"></div>
+  <!-- SEGMENTED CONTROL (tabs) -->
+  <div class="ph-seg-wrap">
+    <div class="ph-seg-ctrl">
+      <div class="ph-seg-indicator" id="segIndicator"></div>
+      <button class="ph-tab active" id="tabRegister" onclick="switchTab('register')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+        </svg>
+        Register
+      </button>
+      <button class="ph-tab" id="tabCheck" onclick="switchTab('check')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        Check Status
+      </button>
+    </div>
   </div>
 
   <!-- MAIN CARD -->
@@ -627,27 +462,25 @@
     <!-- ═══ REGISTER FORM ═══ -->
     <div id="formView">
 
-      <!-- PRODUCT / SERIAL -->
-      <div class="ph-section">
-        <div class="ph-label">
-          <div class="ph-label-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <rect x="3" y="11" width="18" height="11" rx="2"/>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-          </div>
-          Product Details
-        </div>
-        <div class="ph-field">
-          <label>Serial Number *</label>
-          <div class="ph-srl">
+      <!-- Progress dots -->
+      <div class="ph-stepbar" id="stepBarWrap">
+        <div class="ph-step" id="s1"></div>
+        <div class="ph-step" id="s2"></div>
+        <div class="ph-step" id="s3"></div>
+      </div>
+
+      <!-- Serial Number -->
+      <div class="group">
+        <div class="group-label">Product Details</div>
+        <div class="group-card">
+          <div class="field-row">
+            <label>Serial No.</label>
             <input id="r_serial"
-                   placeholder="e.g. PHM-2024-XXXXXX"
-                   required
-                   autocomplete="off"
+                   placeholder="PHM-2024-XXXXXX"
+                   required autocomplete="off"
                    style="text-transform:uppercase;"
                    oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
-            <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="field-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
               <rect x="3" y="11" width="18" height="11" rx="2"/>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
             </svg>
@@ -655,88 +488,77 @@
         </div>
       </div>
 
-      <!-- CUSTOMER INFO -->
-      <div class="ph-section">
-        <div class="ph-label">
-          <div class="ph-label-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
+      <!-- Customer Info -->
+      <div class="group">
+        <div class="group-label">Customer Info</div>
+        <div class="group-card">
+          <div class="field-row">
+            <label>Full Name</label>
+            <input id="r_name" placeholder="Your full name" required oninput="updateStepBar()" />
           </div>
-          Customer Info
-        </div>
-        <div class="ph-field">
-          <label>Full Name *</label>
-          <input id="r_name" placeholder="Your full name" required oninput="updateStepBar()" />
-        </div>
-        <div class="ph-field">
-          <label>Phone Number *</label>
-          <input id="r_phone" placeholder="+91 XXXXX XXXXX" type="tel" required oninput="updateStepBar()" />
-        </div>
-      </div>
-
-      <!-- CAR DETAILS -->
-      <div class="ph-section">
-        <div class="ph-label">
-          <div class="ph-label-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <path d="M5 17H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h13l4 4v4a2 2 0 0 1-2 2h-2"/>
-              <circle cx="8.5" cy="17" r="2.5"/>
-              <circle cx="17.5" cy="17" r="2.5"/>
-              <path d="M3 9h13"/>
-            </svg>
-          </div>
-          Car Details
-        </div>
-        <div class="ph-car-grid">
-          <div class="ph-field">
-            <label>Car Brand *</label>
-            <input id="r_carbrand" placeholder="e.g. Maruti, Hyundai" required oninput="updateStepBar()" />
-          </div>
-          <div class="ph-field">
-            <label>Car Model *</label>
-            <input id="r_carmodel" placeholder="e.g. Swift, Creta" required oninput="updateStepBar()" />
-          </div>
-          <div class="ph-field">
-            <label>Year</label>
-            <input id="r_caryear" placeholder="e.g. 2022" type="number" min="2000" max="2030" />
-          </div>
-          <div class="ph-field">
-            <label>Car Color</label>
-            <input id="r_carcolor" placeholder="e.g. White" />
-          </div>
-          <div class="ph-field ph-car-full">
-            <label>Registration Number *</label>
-            <input id="r_regnumber"
-                   placeholder="e.g. KL-07-AB-1234"
-                   required
-                   style="text-transform:uppercase;"
-                   oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+          <div class="field-row">
+            <label>Phone</label>
+            <input id="r_phone" placeholder="+91 XXXXX XXXXX" type="tel" required oninput="updateStepBar()" />
           </div>
         </div>
       </div>
 
-      <!-- PURCHASE DETAILS -->
-      <div class="ph-section">
-        <div class="ph-label">
-          <div class="ph-label-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <rect x="1" y="4" width="22" height="16" rx="2"/>
-              <line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
+      <!-- Car Details -->
+      <div class="group">
+        <div class="group-label">Car Details</div>
+        <div class="field-grid">
+          <div class="field-full">
+            <div class="field-row">
+              <label>Reg. Number</label>
+              <input id="r_regnumber"
+                     placeholder="KL-07-AB-1234"
+                     required
+                     style="text-transform:uppercase;"
+                     oninput="this.value=this.value.toUpperCase(); updateStepBar();" />
+            </div>
           </div>
-          Purchase Details
+          <div>
+            <div class="field-row">
+              <label>Brand</label>
+              <input id="r_carbrand" placeholder="Maruti, Hyundai…" required oninput="updateStepBar()" />
+            </div>
+          </div>
+          <div>
+            <div class="field-row">
+              <label>Model</label>
+              <input id="r_carmodel" placeholder="Swift, Creta…" required oninput="updateStepBar()" />
+            </div>
+          </div>
+          <div>
+            <div class="field-row">
+              <label>Year</label>
+              <input id="r_caryear" placeholder="2022" type="number" min="2000" max="2030" />
+            </div>
+          </div>
+          <div>
+            <div class="field-row">
+              <label>Color</label>
+              <input id="r_carcolor" placeholder="White" />
+            </div>
+          </div>
         </div>
-        <div class="ph-row">
-          <div class="ph-field">
-            <label>Purchase Date</label>
+      </div>
+
+      <!-- Purchase Details -->
+      <div class="group">
+        <div class="group-label">Purchase Details</div>
+        <div class="group-card">
+          <div class="field-row">
+            <label>Date</label>
             <input id="r_date" placeholder="Auto-filled" readonly />
+            <svg class="field-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+            </svg>
           </div>
-          <div class="ph-field">
-            <label>Location *</label>
+          <div class="field-row has-select">
+            <label>Location</label>
             <select id="r_location" required onchange="updateStepBar()">
-              <option value="">Select</option>
+              <option value="">Select district</option>
               <option>Out of Kerala</option>
               <option>Alappuzha</option>
               <option>Ernakulam</option>
@@ -754,32 +576,32 @@
               <option>Wayanad</option>
             </select>
           </div>
-        </div>
-        <div class="ph-field">
-          <label>Shop / Dealer Name *</label>
-          <input id="r_shop" placeholder="Where did you purchase?" required oninput="updateStepBar()" />
+          <div class="field-row">
+            <label>Shop / Dealer</label>
+            <input id="r_shop" placeholder="Where did you purchase?" required oninput="updateStepBar()" />
+          </div>
         </div>
       </div>
 
+      <!-- Actions -->
       <div class="ph-actions">
-        <div class="ph-btn-row">
-          <button class="ph-btn ph-btn-primary" id="registerBtn" onclick="onRegister()">Register Warranty</button>
-          <button class="ph-btn ph-btn-secondary" onclick="clearForm()">Clear</button>
-        </div>
+        <button class="ph-btn ph-btn-primary" id="registerBtn" onclick="onRegister()">Register Warranty</button>
+        <button class="ph-btn-secondary" onclick="clearForm()">Clear All</button>
+        <div class="ph-status" id="r_status"></div>
       </div>
-      <div class="ph-status" id="r_status"></div>
 
     </div><!-- /formView -->
 
     <!-- ═══ SUCCESS VIEW ═══ -->
     <div class="ph-success" id="successView">
       <div class="ph-success-ring">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0a3d35" stroke-width="2.5">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"
+          stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>
         </svg>
       </div>
-      <h3>Warranty Registered!</h3>
-      <p>Your Phantom film is now covered.<br>Keep this confirmation for your records.</p>
+      <h3>All Set!</h3>
+      <p>Your Phantom film is now registered.<br>Keep this for your records.</p>
       <div class="ph-conf">
         <div class="ph-conf-row">
           <span class="ph-conf-lbl">Serial No.</span>
@@ -806,7 +628,7 @@
           <span class="ph-conf-val" id="conf_date"></span>
         </div>
       </div>
-      <button class="ph-btn ph-btn-secondary" onclick="resetForm()" style="margin-top:14px; width:100%;">
+      <button class="ph-btn-secondary" onclick="resetForm()" style="margin-top:16px;">
         ＋ Register Another
       </button>
     </div><!-- /successView -->
@@ -815,119 +637,102 @@
     <div id="checkView">
 
       <div class="ph-check-hero">
-        <div class="ph-check-hero-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a3d35" stroke-width="2">
-            <circle cx="11" cy="11" r="8"/>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        <h2>Warranty Status</h2>
+        <p>Enter your <strong>Serial Number</strong> or <strong>Car Registration Number</strong> to verify.</p>
+      </div>
+
+      <div class="search-group">
+        <input class="search-input" id="chk_query"
+               placeholder="Serial or Reg. number"
+               style="text-transform:uppercase;"
+               autocomplete="off"
+               oninput="this.value=this.value.toUpperCase()"
+               onkeydown="if(event.key==='Enter') onCheck()" />
+        <button class="search-btn" id="checkBtn" onclick="onCheck()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-        </div>
-        <p>Enter your <strong>Serial Number</strong> or<br><strong>Car Registration Number</strong> to verify</p>
+          Check
+        </button>
       </div>
 
-      <div class="ph-section">
-        <div class="ph-label">
-          <div class="ph-label-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-          Warranty Lookup
-        </div>
-        <div class="ph-field">
-          <label>Serial No. or Car Registration No.</label>
-          <div class="ph-srl">
-            <input id="chk_query"
-                   placeholder="e.g. PHM-2024-XXXXXX or KL-07-AB-1234"
-                   style="text-transform:uppercase;"
-                   autocomplete="off"
-                   oninput="this.value=this.value.toUpperCase()"
-                   onkeydown="if(event.key==='Enter') onCheck()" />
-            <svg class="ph-srl-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="11" cy="11" r="8"/>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div class="ph-actions">
-        <button class="ph-btn ph-btn-primary" id="checkBtn" onclick="onCheck()">Check Warranty Status</button>
-      </div>
-      <div class="ph-status" id="chk_status"></div>
-
-      <!-- Loading -->
-      <div class="ph-loading" id="chk_loading" style="display:none;">
+      <div class="ph-loading" id="chk_loading">
         <div class="ph-spinner"></div>
         Looking up warranty records…
       </div>
+      <div class="ph-status" id="chk_status"></div>
 
       <!-- Result: Found -->
-      <div id="chk_result" style="display:none; margin: 12px 14px 0;">
-        <div style="text-align:center; margin-bottom:8px;">
-          <div class="ph-found-badge">
-            <div class="ph-found-badge-dot"></div>
-            WARRANTY REGISTERED
+      <div class="result-card" id="chk_result">
+        <div class="result-head found">
+          <div class="result-badge found">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="result-title found">WARRANTY REGISTERED</div>
+            <div class="result-sub found">Registration record found</div>
           </div>
         </div>
-        <div class="ph-conf">
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Serial No.</span>
-            <span class="ph-conf-val" id="chk_serial"></span>
+        <div class="result-grid">
+          <div class="result-cell">
+            <div class="result-cell-lbl">Serial No.</div>
+            <div class="result-cell-val" id="chk_serial"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Customer</span>
-            <span class="ph-conf-val" id="chk_name"></span>
+          <div class="result-cell">
+            <div class="result-cell-lbl">Customer</div>
+            <div class="result-cell-val" id="chk_name"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Phone</span>
-            <span class="ph-conf-val" id="chk_phone"></span>
+          <div class="result-cell">
+            <div class="result-cell-lbl">Phone</div>
+            <div class="result-cell-val" id="chk_phone"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Vehicle</span>
-            <span class="ph-conf-val" id="chk_car"></span>
+          <div class="result-cell">
+            <div class="result-cell-lbl">Reg. No.</div>
+            <div class="result-cell-val" id="chk_reg"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Reg. No.</span>
-            <span class="ph-conf-val" id="chk_reg"></span>
+          <div class="result-cell full">
+            <div class="result-cell-lbl">Vehicle</div>
+            <div class="result-cell-val" id="chk_car"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Shop / Dealer</span>
-            <span class="ph-conf-val" id="chk_shop"></span>
+          <div class="result-cell">
+            <div class="result-cell-lbl">Purchase Date</div>
+            <div class="result-cell-val" id="chk_purchase"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Location</span>
-            <span class="ph-conf-val" id="chk_location"></span>
+          <div class="result-cell">
+            <div class="result-cell-lbl">Location</div>
+            <div class="result-cell-val" id="chk_location"></div>
           </div>
-          <div class="ph-conf-row">
-            <span class="ph-conf-lbl">Purchase Date</span>
-            <span class="ph-conf-val" id="chk_purchase"></span>
+          <div class="result-cell full">
+            <div class="result-cell-lbl">Shop / Dealer</div>
+            <div class="result-cell-val" id="chk_shop"></div>
           </div>
-          <div class="ph-conf-row highlight">
-            <span class="ph-conf-lbl">📅 Registered On</span>
-            <span class="ph-conf-val" id="chk_date"></span>
+          <div class="result-cell full" style="background:var(--teal);">
+            <div class="result-cell-lbl" style="color:rgba(255,255,255,.55);">📅 Registered On</div>
+            <div class="result-cell-val" id="chk_date" style="color:#fff; font-size:15px;"></div>
           </div>
         </div>
-        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:12px; width:100%;">Check Another</button>
+        <div style="padding:14px 16px;">
+          <button class="ph-btn-secondary" onclick="clearCheck()" style="margin-top:0;">Check Another</button>
+        </div>
       </div>
 
       <!-- Result: Not Found -->
-      <div id="chk_notfound" style="display:none; margin: 10px 14px 0;">
-        <div class="ph-not-found">
-          <div class="ph-not-found-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.5">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
+      <div class="result-card" id="chk_notfound">
+        <div class="result-head notfound">
+          <div class="result-badge notfound">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </div>
-          <p><strong>No warranty found</strong><br>
-          No record matches <strong id="chk_query_echo"></strong>.<br>
-          Please check and try again, or register a new warranty.</p>
+          <div>
+            <div class="result-title notfound">Not Registered</div>
+            <div class="result-sub notfound">No record matches <strong id="chk_query_echo"></strong></div>
+          </div>
         </div>
-        <button class="ph-btn ph-btn-secondary" onclick="clearCheck()" style="margin-top:6px; width:100%;">Try Again</button>
+        <div style="padding:14px 16px;">
+          <button class="ph-btn-secondary" onclick="clearCheck()" style="margin-top:0;">Try Again</button>
+        </div>
       </div>
 
+      <div style="height:24px"></div>
     </div><!-- /checkView -->
 
   </div><!-- /ph-card -->
@@ -961,6 +766,7 @@
 
     document.getElementById('tabRegister').classList.toggle('active', isReg);
     document.getElementById('tabCheck').classList.toggle('active', !isReg);
+    document.getElementById('segIndicator').classList.toggle('right', !isReg);
     document.getElementById('stepBarWrap').style.display = isReg ? 'flex' : 'none';
 
     const fv = document.getElementById('formView');
@@ -972,13 +778,13 @@
       const showSuccess = sv.style.display === 'block';
       fv.style.display  = showSuccess ? 'none' : 'block';
       sv.style.display  = showSuccess ? 'block' : 'none';
-      document.getElementById('heroTitle').innerHTML  = 'Warranty<br>Registration';
+      document.getElementById('heroTitle').innerHTML  = 'Warranty<br><span>Registration</span>';
       document.getElementById('heroSub').textContent  = 'Register your Phantom film for genuine support & service';
     } else {
       fv.style.display = 'none';
       sv.style.display = 'none';
       cv.style.display = 'block';
-      document.getElementById('heroTitle').innerHTML  = 'Check<br>Warranty';
+      document.getElementById('heroTitle').innerHTML  = 'Check<br><span>Warranty</span>';
       document.getElementById('heroSub').textContent  = 'Verify your Phantom film warranty status';
     }
   }
@@ -1111,9 +917,9 @@
     }
 
     statusEl.textContent = '';
-    document.getElementById('chk_result').style.display   = 'none';
-    document.getElementById('chk_notfound').style.display = 'none';
-    document.getElementById('chk_loading').style.display  = 'block';
+    document.getElementById('chk_result').classList.remove('show');
+    document.getElementById('chk_notfound').classList.remove('show');
+    document.getElementById('chk_loading').classList.add('show');
     btn.style.opacity        = '0.6';
     btn.style.pointerEvents  = 'none';
 
@@ -1127,17 +933,17 @@
     if (typeof google !== 'undefined' && google.script) {
       google.script.run
         .withSuccessHandler(function(res) {
-          document.getElementById('chk_loading').style.display = 'none';
+          document.getElementById('chk_loading').classList.remove('show');
           resetBtn();
           if (res.success) {
             populateCheckResult(res);
           } else {
             document.getElementById('chk_query_echo').textContent = q;
-            document.getElementById('chk_notfound').style.display = 'block';
+            document.getElementById('chk_notfound').classList.add('show');
           }
         })
         .withFailureHandler(function(err) {
-          document.getElementById('chk_loading').style.display = 'none';
+          document.getElementById('chk_loading').classList.remove('show');
           resetBtn();
           statusEl.textContent = '✕ ' + err.toString();
         })
@@ -1150,17 +956,17 @@
       fetch(GAS_URL + '?' + params.toString(), { method: 'GET' })
         .then(function(r) { return r.json(); })
         .then(function(res) {
-          document.getElementById('chk_loading').style.display = 'none';
+          document.getElementById('chk_loading').classList.remove('show');
           resetBtn();
           if (res.success) {
             populateCheckResult(res);
           } else {
             document.getElementById('chk_query_echo').textContent = q;
-            document.getElementById('chk_notfound').style.display = 'block';
+            document.getElementById('chk_notfound').classList.add('show');
           }
         })
         .catch(function(err) {
-          document.getElementById('chk_loading').style.display = 'none';
+          document.getElementById('chk_loading').classList.remove('show');
           resetBtn();
           statusEl.textContent = '✕ Network error. Please check your connection and try again.';
         });
@@ -1177,14 +983,14 @@
     document.getElementById('chk_location').textContent = res.location    || '—';
     document.getElementById('chk_purchase').textContent = res.purchaseDate || '—';
     document.getElementById('chk_date').textContent     = res.timestamp   || '—';
-    document.getElementById('chk_result').style.display = 'block';
+    document.getElementById('chk_result').classList.add('show');
   }
 
   function clearCheck() {
-    document.getElementById('chk_query').value           = '';
-    document.getElementById('chk_result').style.display  = 'none';
-    document.getElementById('chk_notfound').style.display = 'none';
-    document.getElementById('chk_status').textContent    = '';
+    document.getElementById('chk_query').value = '';
+    document.getElementById('chk_result').classList.remove('show');
+    document.getElementById('chk_notfound').classList.remove('show');
+    document.getElementById('chk_status').textContent = '';
   }
 </script>
 
