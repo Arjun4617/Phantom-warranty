@@ -236,21 +236,100 @@
       overflow: hidden; box-shadow: var(--shadow-card);
       display: grid; grid-template-columns: 1fr 1fr;
     }
-    .field-grid .field-row { border-right: .5px solid var(--separator); }
-    .field-grid .field-row:nth-child(even) { border-right: none; }
-    .field-grid .field-row + .field-row::before { left: 0; }
+
+    /* all cells: stacked label + input, column direction */
+    .field-grid > div {
+      border-top: .5px solid var(--separator);
+      border-right: .5px solid var(--separator);
+    }
+    .field-grid > div:nth-child(even) { border-right: none; }
+    .field-grid > div:first-child,
+    .field-grid > div:nth-child(2) { border-top: none; }
+
+    .field-grid .field-row {
+      flex-direction: column; align-items: flex-start;
+      padding: 11px 14px; min-height: 62px; justify-content: center;
+      border: none; /* borders handled by parent div */
+    }
+    /* remove the ::before separator since we use parent div borders */
+    .field-grid .field-row + .field-row::before { display: none; }
+
     .field-grid .field-row label {
-      min-width: unset; font-size: 13px; color: var(--ink-2);
-      display: block; margin-bottom: 2px;
+      min-width: unset; font-size: 11px; font-weight: 600;
+      letter-spacing: .3px; color: var(--ink-3);
+      text-transform: uppercase; display: block; margin-bottom: 4px;
     }
     .field-grid .field-row input {
-      text-align: left; font-size: 14px; font-weight: 500; padding: 0;
+      text-align: left; font-size: 15px; font-weight: 500;
+      padding: 0; width: 100%;
     }
-    .field-grid .field-row { flex-direction: column; align-items: flex-start; padding: 12px 14px; min-height: 60px; justify-content: center; }
-    .field-grid .field-full { grid-column: 1 / -1; border-right: none !important; }
-    .field-grid .field-full .field-row { flex-direction: row; align-items: center; padding: 0 16px; min-height: 52px; }
-    .field-grid .field-full .field-row label { min-width: 130px; font-size: 15px; color: var(--ink-1); margin-bottom: 0; }
-    .field-grid .field-full .field-row input { text-align: right; font-size: 15px; font-weight: 400; }
+
+    /* full-width row (Reg Number) — spans both columns, own row style */
+    .field-grid .field-full {
+      grid-column: 1 / -1;
+      border-right: none !important;
+      border-top: .5px solid var(--separator) !important;
+    }
+    .field-grid .field-full .field-row {
+      flex-direction: row; align-items: center;
+      padding: 0 16px; min-height: 54px;
+    }
+    .field-grid .field-full .field-row label {
+      min-width: 120px; font-size: 15px; font-weight: 400;
+      color: var(--ink-1); text-transform: none;
+      letter-spacing: 0; margin-bottom: 0; flex-shrink: 0;
+    }
+    .field-grid .field-full .field-row input {
+      text-align: right; font-size: 15px; font-weight: 400;
+      flex: 1; min-width: 0;
+    }
+
+    /* ── Fillable field visual cues ── */
+    /* Editable inputs get a light tinted background so they're clearly "fillable" */
+    .field-row input:not([readonly]),
+    .field-row select {
+      background: rgba(10,61,53,0.03);
+      border-radius: 6px;
+      padding-left: 6px; padding-right: 6px;
+    }
+    .field-row input:not([readonly]):focus,
+    .field-row select:focus {
+      background: rgba(10,61,53,0.07);
+      outline: none;
+    }
+    /* Keep grid inputs left-padded consistently */
+    .field-grid .field-row input:not([readonly]) {
+      padding-left: 0; padding-right: 0;
+      background: transparent;
+      border-bottom: 1.5px solid var(--sep-opaque);
+      border-radius: 0;
+      padding-bottom: 3px;
+    }
+    .field-grid .field-row input:not([readonly]):focus {
+      border-bottom-color: var(--teal);
+      background: transparent;
+    }
+    /* Full-width reg number input uses right-aligned style */
+    .field-grid .field-full .field-row input:not([readonly]) {
+      border-bottom: none;
+      border-radius: 6px;
+      background: rgba(10,61,53,0.03);
+      padding: 6px 6px;
+    }
+    .field-grid .field-full .field-row input:not([readonly]):focus {
+      background: rgba(10,61,53,0.07);
+    }
+
+    /* Placeholder styling — more visible */
+    .field-row input::placeholder { color: var(--ink-3); font-weight: 400; }
+
+    /* Required field dot indicator on group label */
+    .group-label.required::after {
+      content: ' ●';
+      color: var(--red);
+      font-size: 8px;
+      vertical-align: super;
+    }
 
     /* ── CTA ── */
     .ph-actions { margin: 20px 16px 0; }
@@ -471,7 +550,7 @@
 
       <!-- Serial Number -->
       <div class="group">
-        <div class="group-label">Product Details</div>
+        <div class="group-label required">Product Details</div>
         <div class="group-card">
           <div class="field-row">
             <label>Serial No.</label>
@@ -490,7 +569,7 @@
 
       <!-- Customer Info -->
       <div class="group">
-        <div class="group-label">Customer Info</div>
+        <div class="group-label required">Customer Info</div>
         <div class="group-card">
           <div class="field-row">
             <label>Full Name</label>
@@ -505,7 +584,7 @@
 
       <!-- Car Details -->
       <div class="group">
-        <div class="group-label">Car Details</div>
+        <div class="group-label required">Car Details</div>
         <div class="field-grid">
           <div class="field-full">
             <div class="field-row">
@@ -546,7 +625,7 @@
 
       <!-- Purchase Details -->
       <div class="group">
-        <div class="group-label">Purchase Details</div>
+        <div class="group-label required">Purchase Details</div>
         <div class="group-card">
           <div class="field-row">
             <label>Date</label>
